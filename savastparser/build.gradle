@@ -19,7 +19,7 @@ android {
         minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName version
     }
     buildTypes {
         release {
@@ -87,5 +87,5 @@ dependencies {
     compile 'tv.superawesome.lib.sautils:sautils:0.1.5'
     compile 'tv.superawesome.lib.saevents:saevents:0.1.4'
     compile 'tv.superawesome.lib.sajsonparser:sajsonparser:0.1.0'
-    compile 'tv.superawesome.lib.savideoplayer:savideoplayer:0.1.1'
+    compile 'tv.superawesome.lib.savideoplayer:savideoplayer:0.1.3'
 }
