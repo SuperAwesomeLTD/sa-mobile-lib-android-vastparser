@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="savideoplayer-0.1.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/tv.superawesome.lib.savideoplayer/savideoplayer/0.1.4/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/tv.superawesome.lib.savideoplayer/savideoplayer/0.1.4/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
