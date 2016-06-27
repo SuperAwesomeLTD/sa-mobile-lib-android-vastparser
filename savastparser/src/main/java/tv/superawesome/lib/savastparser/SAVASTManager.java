@@ -6,9 +6,9 @@ import java.util.List;
 
 import tv.superawesome.lib.saevents.SAEvents;
 import tv.superawesome.lib.sautils.SAUtils;
-import tv.superawesome.lib.savastparser.models.SAVASTAd;
-import tv.superawesome.lib.savastparser.models.SAVASTCreative;
-import tv.superawesome.lib.savastparser.models.SAVASTTracking;
+import tv.superawesome.lib.samodelspace.SAVASTAd;
+import tv.superawesome.lib.samodelspace.SAVASTCreative;
+import tv.superawesome.lib.samodelspace.SAVASTTracking;
 import tv.superawesome.lib.savideoplayer.SAVideoPlayer;
 import tv.superawesome.lib.savideoplayer.SAVideoPlayerInterface;
 

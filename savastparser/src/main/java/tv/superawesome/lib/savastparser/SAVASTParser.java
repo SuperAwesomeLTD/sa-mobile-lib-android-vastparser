@@ -16,12 +16,12 @@ import tv.superawesome.lib.sautils.SAFileDownloader;
 import tv.superawesome.lib.sautils.SAFileDownloaderInterface;
 import tv.superawesome.lib.sautils.SANetworkInterface;
 import tv.superawesome.lib.sautils.SANetwork;
-import tv.superawesome.lib.savastparser.models.SAVASTAd;
-import tv.superawesome.lib.savastparser.models.SAVASTAdType;
-import tv.superawesome.lib.savastparser.models.SAVASTCreative;
-import tv.superawesome.lib.savastparser.models.SAVASTCreativeType;
-import tv.superawesome.lib.savastparser.models.SAVASTMediaFile;
-import tv.superawesome.lib.savastparser.models.SAVASTTracking;
+import tv.superawesome.lib.samodelspace.SAVASTAd;
+import tv.superawesome.lib.samodelspace.SAVASTAdType;
+import tv.superawesome.lib.samodelspace.SAVASTCreative;
+import tv.superawesome.lib.samodelspace.SAVASTCreativeType;
+import tv.superawesome.lib.samodelspace.SAVASTMediaFile;
+import tv.superawesome.lib.samodelspace.SAVASTTracking;
 
 /**
  * Created by gabriel.coman on 22/12/15.

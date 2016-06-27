@@ -1,7 +1,7 @@
 package tv.superawesome.lib.savastparser;
 
 import java.util.List;
-import tv.superawesome.lib.savastparser.models.SAVASTAd;
+import tv.superawesome.lib.samodelspace.SAVASTAd;
 
 /**
  * Public interface
