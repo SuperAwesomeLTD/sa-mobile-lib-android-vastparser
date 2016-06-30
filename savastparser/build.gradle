@@ -87,5 +87,5 @@ dependencies {
     compile 'tv.superawesome.lib.sautils:sautils:0.1.8'
     compile 'tv.superawesome.lib.saevents:saevents:0.2.6'
     compile 'tv.superawesome.lib.samodelspace:samodelspace:0.1.2'
-    compile 'tv.superawesome.lib.savideoplayer:savideoplayer:0.1.4'
+    compile 'tv.superawesome.lib.savideoplayer:savideoplayer:0.1.5'
 }
