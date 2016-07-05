@@ -2,6 +2,7 @@ package tv.superawesome.lib.savastparser;
 
 import android.util.Log;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -12,16 +13,16 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import tv.superawesome.lib.sautils.SAFileDownloader;
-import tv.superawesome.lib.sautils.SAFileDownloaderInterface;
-import tv.superawesome.lib.sautils.SANetworkInterface;
-import tv.superawesome.lib.sautils.SANetwork;
+import tv.superawesome.lib.sanetwork.request.*;
+import tv.superawesome.lib.sanetwork.file.*;
 import tv.superawesome.lib.samodelspace.SAVASTAd;
 import tv.superawesome.lib.samodelspace.SAVASTAdType;
 import tv.superawesome.lib.samodelspace.SAVASTCreative;
 import tv.superawesome.lib.samodelspace.SAVASTCreativeType;
 import tv.superawesome.lib.samodelspace.SAVASTMediaFile;
 import tv.superawesome.lib.samodelspace.SAVASTTracking;
+import tv.superawesome.lib.sautils.SAApplication;
+import tv.superawesome.lib.sautils.SAUtils;
 
 /**
  * Created by gabriel.coman on 22/12/15.
@@ -40,10 +41,11 @@ public class SAVASTParser {
             public void didParseVAST(final SAVASTAd ad) {
 
                 // do a final check for wrapper ads that have null or incorrect data
-                if (ad.creative.playableMediaUrl == null || ad.creative.mediaFiles.size() == 0) {
+                if (ad == null || ad.creative.playableMediaUrl == null || ad.creative.mediaFiles.size() == 0) {
                     listener.didParseVAST(null);
                 }
                 else {
+                    SAFileDownloader.getInstance().setupDownloader(SAApplication.getSAApplicationContext());
                     SAFileDownloader.getInstance().downloadFile(ad.creative.playableMediaUrl, ad.creative.playableDiskUrl, new SAFileDownloaderInterface() {
                         @Override
                         public void finished() {
@@ -69,13 +71,20 @@ public class SAVASTParser {
      */
     private void parseVAST(String url, final SAVASTParserInterface listener) {
         /** step 1: get the XML */
-        final SANetwork network = new SANetwork();
-        network.asyncGet(url, new JSONObject(), new SANetworkInterface() {
-            @Override
-            public void success(Object data) {
-                String VAST = (String)data;
+        JSONObject header = new JSONObject();
+        try {
+            header.put("Content-Type", "application/json");
+            header.put("User-Agent", SAUtils.getUserAgent());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        final SANetwork network = new SANetwork();
+        network.sendGET(SAApplication.getSAApplicationContext(), url, new JSONObject(), header, new SANetworkInterface() {
+            @Override
+            public void success(int status, String VAST) {
                 Document doc = null;
+                Log.d("SuperAwesome", status + "\n" + VAST);
                 try {
                     // get the XML doc and the root element
                     doc = SAXML.parseXML(VAST);
@@ -86,7 +95,7 @@ public class SAVASTParser {
                         listener.didParseVAST(null);
                         return;
                     }
-                    if (! SAXML.checkSiblingsAndChildrenOf(root, "Ad")) {
+                    if (!SAXML.checkSiblingsAndChildrenOf(root, "Ad")) {
                         listener.didParseVAST(null);
                         return;
                     }
@@ -118,6 +127,8 @@ public class SAVASTParser {
                         listener.didParseVAST(null);
                     }
                 } catch (ParserConfigurationException | IOException | SAXException | NullPointerException e) {
+                    Log.d("SuperAwesome", e.toString());
+                    e.printStackTrace();
                     listener.didParseVAST(null);
                 }
             }
