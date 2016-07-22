@@ -56,7 +56,7 @@ public class SAVASTParser {
                         @Override
                         public void failure() {
                             ad.creative.isOnDisk = false;
-                            listener.didParseVAST(ad);
+                            listener.didParseVAST(null);
                         }
                     });
                 }
