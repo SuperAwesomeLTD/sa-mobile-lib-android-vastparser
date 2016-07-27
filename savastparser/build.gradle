@@ -82,9 +82,10 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
     compile 'tv.superawesome.lib.sanetwork:sanetwork:0.1.6'
     compile 'tv.superawesome.lib.sautils:sautils:0.2.1'
-    compile 'tv.superawesome.lib.saevents:saevents:0.3.5'
-    compile 'tv.superawesome.lib.samodelspace:samodelspace:0.1.4'
+    compile 'tv.superawesome.lib.saevents:saevents:0.3.6'
+    compile 'tv.superawesome.lib.samodelspace:samodelspace:0.1.5'
     compile 'tv.superawesome.lib.savideoplayer:savideoplayer:0.1.6'
 }
