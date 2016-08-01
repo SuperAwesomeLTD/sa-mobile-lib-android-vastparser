@@ -2,7 +2,6 @@ package tv.superawesome.lib.savastparser;
 
 import android.util.Log;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import tv.superawesome.lib.sajsonparser.SAJsonParser;
 import tv.superawesome.lib.sanetwork.request.*;
 import tv.superawesome.lib.sanetwork.file.*;
 import tv.superawesome.lib.samodelspace.SAVASTAd;
@@ -71,20 +71,17 @@ public class SAVASTParser {
      */
     private void parseVAST(String url, final SAVASTParserInterface listener) {
         /** step 1: get the XML */
-        JSONObject header = new JSONObject();
-        try {
-            header.put("Content-Type", "application/json");
-            header.put("User-Agent", SAUtils.getUserAgent());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        JSONObject header = SAJsonParser.newObject(new Object[]{
+                "Content-Type", "application/json",
+                "User-Agent", SAUtils.getUserAgent()
+        });
 
         final SANetwork network = new SANetwork();
         network.sendGET(SAApplication.getSAApplicationContext(), url, new JSONObject(), header, new SANetworkInterface() {
             @Override
             public void success(int status, String VAST) {
                 Document doc = null;
-                Log.d("SuperAwesome", status + "\n" + VAST);
+
                 try {
                     // get the XML doc and the root element
                     doc = SAXML.parseXML(VAST);
@@ -128,7 +125,6 @@ public class SAVASTParser {
                     }
                 } catch (ParserConfigurationException | IOException | SAXException | NullPointerException e) {
                     Log.d("SuperAwesome", e.toString());
-                    e.printStackTrace();
                     listener.didParseVAST(null);
                 }
             }

@@ -55,7 +55,15 @@ public class SAVASTManager implements SAVASTParserInterface, SAVideoPlayerInterf
 
     public void manageWithAd(SAVASTAd ad) {
         /** error checking */
-        if (ad == null || ad.creative == null) {
+        if (ad == null) {
+            if (listener != null) {
+                listener.didNotFindAds();
+            }
+            return;
+        }
+
+        /** safer check ? */
+        if (ad.creative == null) {
             if (listener != null) {
                 listener.didNotFindAds();
             }
