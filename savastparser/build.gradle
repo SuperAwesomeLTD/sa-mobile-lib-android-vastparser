@@ -85,7 +85,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'tv.superawesome.lib.sanetwork:sanetwork:0.1.6'
     compile 'tv.superawesome.lib.sautils:sautils:0.2.1'
-    compile 'tv.superawesome.lib.saevents:saevents:0.4.0'
-    compile 'tv.superawesome.lib.samodelspace:samodelspace:0.1.9'
+    compile 'tv.superawesome.lib.saevents:saevents:0.4.1'
+    compile 'tv.superawesome.lib.samodelspace:samodelspace:0.2.0'
     compile 'tv.superawesome.lib.savideoplayer:savideoplayer:0.1.6'
 }
