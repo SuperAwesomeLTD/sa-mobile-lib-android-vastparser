@@ -94,12 +94,8 @@ public class SAVASTManager implements SAVASTParserInterface, SAVideoPlayerInterf
 
     @Override
     public void didFindPlayerReady() {
-
-        if (!_cAd.isImpressionSent) {
-            for (String Impression : _cAd.impressions) {
-                SAEvents.sendEventToURL(Impression);
-            }
-            _cAd.isImpressionSent = true;
+        for (String Impression : _cAd.impressions) {
+            SAEvents.sendEventToURL(Impression);
         }
     }
 
