@@ -48,15 +48,14 @@ public class SAVASTParser {
                     SAFileDownloader.getInstance().setupDownloader(SAApplication.getSAApplicationContext());
                     SAFileDownloader.getInstance().downloadFile(ad.creative.playableMediaUrl, ad.creative.playableDiskUrl, new SAFileDownloaderInterface() {
                         @Override
-                        public void finished() {
-                            ad.creative.isOnDisk = true;
-                            listener.didParseVAST(ad);
-                        }
-
-                        @Override
-                        public void failure() {
-                            ad.creative.isOnDisk = false;
-                            listener.didParseVAST(null);
+                        public void response(boolean success) {
+                            if (!success) {
+                                ad.creative.isOnDisk = false;
+                                listener.didParseVAST(null);
+                            } else {
+                                ad.creative.isOnDisk = true;
+                                listener.didParseVAST(ad);
+                            }
                         }
                     });
                 }
@@ -79,7 +78,14 @@ public class SAVASTParser {
         final SANetwork network = new SANetwork();
         network.sendGET(SAApplication.getSAApplicationContext(), url, new JSONObject(), header, new SANetworkInterface() {
             @Override
-            public void success(int status, String VAST) {
+            public void response(int status, String VAST, boolean success) {
+                // error case
+                if (!success) {
+                    listener.didParseVAST(null);
+                    return;
+                }
+
+                // continue with success
                 Document doc = null;
 
                 try {
@@ -127,11 +133,6 @@ public class SAVASTParser {
                     Log.d("SuperAwesome", e.toString());
                     listener.didParseVAST(null);
                 }
-            }
-
-            @Override
-            public void failure() {
-                listener.didParseVAST(null);
             }
         });
     }
