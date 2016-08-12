@@ -84,8 +84,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'tv.superawesome.lib.sanetwork:sanetwork:0.1.9'
-    compile 'tv.superawesome.lib.sautils:sautils:0.2.3'
-    compile 'tv.superawesome.lib.saevents:saevents:0.4.7'
+    compile 'tv.superawesome.lib.sautils:sautils:0.2.4'
+    compile 'tv.superawesome.lib.saevents:saevents:0.4.8'
     compile 'tv.superawesome.lib.samodelspace:samodelspace:0.2.4'
     compile 'tv.superawesome.lib.savideoplayer:savideoplayer:0.1.7'
 }

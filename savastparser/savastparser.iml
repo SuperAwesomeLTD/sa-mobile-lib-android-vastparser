@@ -97,12 +97,12 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="sasession-0.1.3" level="project" />
     <orderEntry type="library" exported="" name="sajsonparser-0.2.1" level="project" />
-    <orderEntry type="library" exported="" name="sautils-0.2.3" level="project" />
-    <orderEntry type="library" exported="" name="saevents-0.4.7" level="project" />
+    <orderEntry type="library" exported="" name="saevents-0.4.8" level="project" />
+    <orderEntry type="library" exported="" name="sautils-0.2.4" level="project" />
     <orderEntry type="library" exported="" name="sanetwork-0.1.9" level="project" />
     <orderEntry type="library" exported="" name="savideoplayer-0.1.7" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
     <orderEntry type="library" exported="" name="samodelspace-0.2.4" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
   </component>
 </module>
