@@ -45,17 +45,12 @@ public class SAVASTParser {
                     listener.didParseVAST(null);
                 }
                 else {
-                    SAFileDownloader.getInstance().setupDownloader(SAApplication.getSAApplicationContext());
-                    SAFileDownloader.getInstance().downloadFile(ad.creative.playableMediaUrl, ad.creative.playableDiskUrl, new SAFileDownloaderInterface() {
+                    SAFileDownloader downloader = new SAFileDownloader (SAApplication.getSAApplicationContext());
+                    downloader.downloadFile(ad.creative.playableMediaUrl, ad.creative.playableDiskUrl, new SAFileDownloaderInterface() {
                         @Override
                         public void response(boolean success) {
-                            if (!success) {
-                                ad.creative.isOnDisk = false;
-                                listener.didParseVAST(null);
-                            } else {
-                                ad.creative.isOnDisk = true;
-                                listener.didParseVAST(ad);
-                            }
+                            ad.creative.isOnDisk = success;
+                            listener.didParseVAST(success ? ad : null);
                         }
                     });
                 }
@@ -280,7 +275,7 @@ public class SAVASTParser {
             if (creative.mediaFiles.size() > 0) {
                 creative.playableMediaUrl = creative.mediaFiles.get(0).url;
                 if (creative.playableMediaUrl != null) {
-                    creative.playableDiskUrl = SAFileDownloader.getInstance().getDiskLocation();
+                    creative.playableDiskUrl = SAFileDownloader.getDiskLocation();
                 }
             }
 
