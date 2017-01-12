@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="sanetwork-0.3.4">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/savastparser/build/intermediates/exploded-aar/tv.superawesome.lib.sanetwork/sanetwork/0.3.4/res" />
+      <root url="jar://$PROJECT_DIR$/savastparser/build/intermediates/exploded-aar/tv.superawesome.lib.sanetwork/sanetwork/0.3.4/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
