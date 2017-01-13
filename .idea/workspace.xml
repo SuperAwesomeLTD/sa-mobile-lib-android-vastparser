@@ -10,7 +10,12 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7de0651-1578-4920-885d-1fb1cc0add8a" name="Default" comment="" />
+    <list default="true" id="e7de0651-1578-4920-885d-1fb1cc0add8a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java" afterPath="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java" afterPath="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java" />
+    </list>
     <ignored path="sa-mobile-lib-android-vastparser.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,9 +62,14 @@
       <file leaf-file-name="SAVASTParser_Tests.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Tests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="343">
+              <caret line="224" column="42" selection-start-line="224" selection-start-column="42" selection-end-line="224" selection-end-column="42" />
+              <folding>
+                <element signature="e#12672#14757#0" expanded="true" />
+                <element signature="e#14756#14757#0" expanded="true" />
+                <element signature="e#14793#17026#0" expanded="true" />
+                <element signature="e#17025#17026#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,7 +77,7 @@
       <file leaf-file-name="SAXMLParser_Tests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAXMLParser_Tests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4545">
+            <state relative-caret-position="96">
               <caret line="320" column="36" selection-start-line="316" selection-start-column="12" selection-end-line="320" selection-end-column="36" />
               <folding />
             </state>
@@ -89,8 +99,8 @@
       <file leaf-file-name="SAVASTParserInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+            <state relative-caret-position="165">
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
               <folding>
                 <element signature="e#0#121#0" expanded="true" />
               </folding>
@@ -111,11 +121,27 @@
       <file leaf-file-name="SAVASTParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1875">
-              <caret line="148" column="48" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
+            <state relative-caret-position="243">
+              <caret line="75" column="17" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
               <folding>
                 <element signature="e#0#121#0" expanded="true" />
+                <element signature="e#1153#1154#0" expanded="true" />
+                <element signature="e#1191#1192#0" expanded="true" />
+                <element signature="e#2084#5278#0" expanded="true" />
+                <element signature="e#3860#4758#0" expanded="true" />
+                <element signature="e#4757#4758#0" expanded="true" />
+                <element signature="e#5277#5278#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SAVASTAd.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/savastparser/build/intermediates/exploded-aar/tv.superawesome.lib.samodelspace/samodelspace/0.4.9/jars/classes.jar!/tv/superawesome/lib/samodelspace/SAVASTAd.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,7 +151,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
               <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-              <folding />
+              <folding>
+                <element signature="e#0#23673#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,8 +161,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/superawesome/tv/savastparserdemoapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+            <state relative-caret-position="45">
+              <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -2750,16 +2778,16 @@
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/superawesome/tv/savastparserdemoapp/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTMedia.java" />
         <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTAd.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/TestSuite.java" />
         <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAXMLParser.java" />
         <option value="$PROJECT_DIR$/savastparser/build.gradle" />
-        <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAXMLParser_Tests.java" />
+        <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java" />
         <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/superawesome/tv/savastparserdemoapp/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Tests.java" />
       </list>
     </option>
@@ -2899,51 +2927,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
     <property name="device.picker.selection" value="192.168.63.101:5555" />
   </component>
-  <component name="RunManager" selected="Android Tests.TestSuite">
-    <configuration default="false" name="testCheckSiblingsA...()" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true" nameIsGenerated="true">
-      <module name="app" />
-      <option name="TESTING_TYPE" value="3" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
-      <option name="METHOD_NAME" value="testCheckSiblingsAndChildrenOf" />
-      <option name="CLASS_NAME" value="superawesome.tv.savastparserdemoapp.SAXMLParser_Tests" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-      </Hybrid>
-      <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-      </Native>
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Android Tests.testVASTTag1()">
     <configuration default="false" name="TestSuite" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <option name="TESTING_TYPE" value="2" />
@@ -3081,6 +3065,50 @@
       <option name="TESTING_TYPE" value="3" />
       <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
       <option name="METHOD_NAME" value="testParseAdXML" />
+      <option name="CLASS_NAME" value="superawesome.tv.savastparserdemoapp.SAVASTParser_Tests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Native>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="false" name="testVASTTag1()" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
+      <option name="METHOD_NAME" value="testVASTTag1" />
       <option name="CLASS_NAME" value="superawesome.tv.savastparserdemoapp.SAVASTParser_Tests" />
       <option name="PACKAGE_NAME" value="" />
       <option name="EXTRA_OPTIONS" value="" />
@@ -3374,7 +3402,7 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="app" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -3421,19 +3449,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Android App.app" />
-      <item index="1" class="java.lang.String" itemvalue="Android Tests.testCheckSiblingsA...()" />
-      <item index="2" class="java.lang.String" itemvalue="Android Tests.TestSuite" />
-      <item index="3" class="java.lang.String" itemvalue="Android Tests.testParseMediaXML()" />
-      <item index="4" class="java.lang.String" itemvalue="Android Tests.testParseMediaXML2...()" />
-      <item index="5" class="java.lang.String" itemvalue="Android Tests.testParseAdXML()" />
+      <item index="1" class="java.lang.String" itemvalue="Android Tests.TestSuite" />
+      <item index="2" class="java.lang.String" itemvalue="Android Tests.testParseMediaXML()" />
+      <item index="3" class="java.lang.String" itemvalue="Android Tests.testParseMediaXML2...()" />
+      <item index="4" class="java.lang.String" itemvalue="Android Tests.testParseAdXML()" />
+      <item index="5" class="java.lang.String" itemvalue="Android Tests.testVASTTag1()" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Android Tests.TestSuite" />
-        <item index="1" class="java.lang.String" itemvalue="Android Tests.testParseAdXML()" />
-        <item index="2" class="java.lang.String" itemvalue="Android Tests.testParseMediaXML2...()" />
-        <item index="3" class="java.lang.String" itemvalue="Android Tests.testParseMediaXML()" />
-        <item index="4" class="java.lang.String" itemvalue="Android Tests.testCheckSiblingsA...()" />
+        <item index="0" class="java.lang.String" itemvalue="Android Tests.testVASTTag1()" />
+        <item index="1" class="java.lang.String" itemvalue="Android Tests.TestSuite" />
+        <item index="2" class="java.lang.String" itemvalue="Android Tests.testParseAdXML()" />
+        <item index="3" class="java.lang.String" itemvalue="Android Tests.testParseMediaXML2...()" />
+        <item index="4" class="java.lang.String" itemvalue="Android Tests.testParseMediaXML()" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -3463,35 +3491,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestSuite - 2017.01.12 at 18h 06m 37s.xml">
-      <configuration name="TestSuite" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 27m 39s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="TestSuite - 2017.01.12 at 18h 47m 31s.xml">
-      <configuration name="TestSuite" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 27m 53s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="testParseAdXML() - 2017.01.12 at 18h 24m 07s.xml">
-      <configuration name="testParseAdXML()" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 29m 14s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="testParseAdXML() - 2017.01.12 at 18h 24m 30s.xml">
-      <configuration name="testParseAdXML()" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 29m 20s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="testParseAdXML() - 2017.01.12 at 18h 24m 52s.xml">
-      <configuration name="testParseAdXML()" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 30m 12s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="testParseAdXML() - 2017.01.12 at 18h 27m 06s.xml">
-      <configuration name="testParseAdXML()" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 31m 15s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="testParseAdXML() - 2017.01.12 at 18h 30m 21s.xml">
-      <configuration name="testParseAdXML()" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 31m 34s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="testParseAdXML() - 2017.01.12 at 18h 44m 27s.xml">
-      <configuration name="testParseAdXML()" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 34m 29s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="testParseMediaXML() - 2017.01.12 at 18h 13m 51s.xml">
-      <configuration name="testParseMediaXML()" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 36m 05s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="testParseMediaXML2___() - 2017.01.12 at 18h 16m 59s.xml">
-      <configuration name="testParseMediaXML2...()" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="testVASTTag1() - 2017.01.13 at 09h 36m 52s.xml">
+      <configuration name="testVASTTag1()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -3506,7 +3534,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5062035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6166253" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5062035" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3520,7 +3548,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995037" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3536,7 +3564,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -3554,7 +3584,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#12672#14757#0" expanded="true" />
+            <element signature="e#14756#14757#0" expanded="true" />
+            <element signature="e#14793#17026#0" expanded="true" />
+            <element signature="e#17025#17026#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3600,6 +3635,12 @@
           <caret line="148" column="48" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
           <folding>
             <element signature="e#0#121#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1191#1192#0" expanded="true" />
+            <element signature="e#2084#5278#0" expanded="true" />
+            <element signature="e#3860#4758#0" expanded="true" />
+            <element signature="e#4757#4758#0" expanded="true" />
+            <element signature="e#5277#5278#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3608,7 +3649,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="e#0#23673#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3632,6 +3675,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3657,6 +3701,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3665,6 +3710,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3672,15 +3718,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/superawesome/tv/savastparserdemoapp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
-          <folding />
+          <folding>
+            <element signature="e#0#23673#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3694,34 +3734,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTAd.java" />
-    <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAXMLParser_Tests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4545">
-          <caret line="320" column="36" selection-start-line="316" selection-start-column="12" selection-end-line="320" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1875">
-          <caret line="148" column="48" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAXMLParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1830">
@@ -3742,11 +3754,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/savastparser/build/intermediates/exploded-aar/tv.superawesome.lib.samodelspace/samodelspace/0.4.9/jars/classes.jar!/tv/superawesome/lib/samodelspace/SAVASTAd.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAXMLParser_Tests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="320" column="36" selection-start-line="316" selection-start-column="12" selection-end-line="320" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/superawesome/tv/savastparserdemoapp/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="75" column="17" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#121#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1191#1192#0" expanded="true" />
+            <element signature="e#2084#5278#0" expanded="true" />
+            <element signature="e#3860#4758#0" expanded="true" />
+            <element signature="e#4757#4758#0" expanded="true" />
+            <element signature="e#5277#5278#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Tests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="60" column="38" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="343">
+          <caret line="224" column="42" selection-start-line="224" selection-start-column="42" selection-end-line="224" selection-end-column="42" />
+          <folding>
+            <element signature="e#12672#14757#0" expanded="true" />
+            <element signature="e#14756#14757#0" expanded="true" />
+            <element signature="e#14793#17026#0" expanded="true" />
+            <element signature="e#17025#17026#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

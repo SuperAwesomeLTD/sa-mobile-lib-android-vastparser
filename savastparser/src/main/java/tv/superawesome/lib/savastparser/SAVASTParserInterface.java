@@ -9,7 +9,7 @@ import tv.superawesome.lib.samodelspace.SAVASTAd;
 /**
  * Interface used by the VAST parser to return a complete parsed VAST Ad
  */
-interface SAVASTParserInterface {
+public interface SAVASTParserInterface {
 
     /**
      * Main method that needs to be implemented by the library users in order to get back a valid

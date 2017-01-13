@@ -31,9 +31,6 @@ public class SAVASTParser {
     // private context
     private Context context = null;
 
-    // private parser listener
-    private SAVASTParserInterface listener;
-
     /**
      * Simple constructor with a context as a parameter
      *
@@ -41,7 +38,6 @@ public class SAVASTParser {
      */
     public SAVASTParser (Context context) {
         this.context = context;
-        this.listener = new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
     }
 
     /**
@@ -53,8 +49,8 @@ public class SAVASTParser {
      */
     public void parseVAST(String url, final SAVASTParserInterface listener) {
 
-        // get the listener copy
-        this.listener = listener != null ? listener : this.listener;
+        // get a local copy of the listener and make sure it's not null
+        final SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
 
         // create the header
         JSONObject header = SAJsonParser.newObject(new Object[]{
@@ -76,7 +72,7 @@ public class SAVASTParser {
 
                 // in case of failure return a basic VAST Ad
                 if (!success) {
-                    SAVASTParser.this.listener.didParseVAST(new SAVASTAd());
+                    localListener.didParseVAST(new SAVASTAd());
                 }
                 // in case of success try to parse the document
                 else {
@@ -89,7 +85,7 @@ public class SAVASTParser {
 
                         // in case of error (could not find an Ad XML Element, for example)
                         if (Ad == null) {
-                            SAVASTParser.this.listener.didParseVAST(new SAVASTAd());
+                            localListener.didParseVAST(new SAVASTAd());
                             return;
                         }
 
@@ -98,7 +94,7 @@ public class SAVASTParser {
 
                         // inline case
                         if (ad.vastType == SAVASTAdType.InLine) {
-                            SAVASTParser.this.listener.didParseVAST(ad);
+                            localListener.didParseVAST(ad);
                         }
                         // wrapper case
                         else if (ad.vastType == SAVASTAdType.Wrapper) {
@@ -116,18 +112,18 @@ public class SAVASTParser {
                                     ad.sumAd(wrapper);
 
                                     // respond with the summed ad
-                                    SAVASTParser.this.listener.didParseVAST(ad);
+                                    localListener.didParseVAST(ad);
                                 }
                             });
                         }
                         // some other invalid case
                         else {
-                            SAVASTParser.this.listener.didParseVAST(new SAVASTAd());
+                            localListener.didParseVAST(new SAVASTAd());
                         }
                     }
                     // in case of error just send the same empty ad
                     catch (ParserConfigurationException | IOException | SAXException e) {
-                        SAVASTParser.this.listener.didParseVAST(new SAVASTAd());
+                        localListener.didParseVAST(new SAVASTAd());
                     }
                 }
             }
@@ -135,7 +131,7 @@ public class SAVASTParser {
     }
 
     /**
-     * Method that parses an XML containing a VAST ad into a SAVASTAd obkect
+     * Method that parses an XML containing a VAST ad into a SAVASTAd object
      *
      * @param adElement the XML Element
      * @return          a SAVASTAd object
