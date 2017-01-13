@@ -90,7 +90,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertNotNull(ad);
                 assertNotNull(ad.mediaUrl);
 
-                String expected_mediaURL = "https://redirector.gvt1.com/videoplayback/id/b0cfd0ddf8c2a3c3/itag/22/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2Fmp4/ip/0.0.0.0/ipbits/0/expire/1484318482/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime/signature/06821FD260B6B093804096236AFECD7D562ACF72.81F2FB9703161A946F4A113012D54DCB665094A5/key/ck2/file/file.mp4";
+                String expected_mediaURL = "https://ads.superawesome.tv/v2/demo_images/video.mp4";
                 int expected_vastEventsL = 40;
                 int expected_errorL = 2;
                 int expected_impressionL = 2;
