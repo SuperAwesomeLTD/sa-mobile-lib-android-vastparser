@@ -30,6 +30,9 @@ public class SAVASTParser {
 
     // private context
     private Context context = null;
+    // the header & query
+    private JSONObject header = null;
+    private JSONObject query = null;
 
     /**
      * Simple constructor with a context as a parameter
@@ -38,6 +41,62 @@ public class SAVASTParser {
      */
     public SAVASTParser (Context context) {
         this.context = context;
+        query = new JSONObject();
+        header = SAJsonParser.newObject(new Object[]{
+                "Content-Type", "application/json",
+                "User-Agent", SAUtils.getUserAgent(context)
+        });
+    }
+
+    public void parseVAST (String url, final SAVASTParserInterface listener) {
+        SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
+        recursiveParse(url, new SAVASTAd(), localListener);
+    }
+
+
+    public void recursiveParse(String url, final SAVASTAd startAd, final SAVASTParserInterface listener) {
+
+        final SANetwork network = new SANetwork();
+        network.sendGET(context, url, query, header, new SANetworkInterface() {
+            @Override
+            public void response(int status, String vast, boolean success) {
+
+                if (!success) {
+                    listener.didParseVAST(startAd);
+                }
+                else try {
+                    Document document = SAXMLParser.parseXML(vast);
+
+                    Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, "Ad");
+
+                    if (Ad == null) {
+                        listener.didParseVAST(startAd);
+                        return;
+                    }
+
+                    SAVASTAd ad = parseAdXML(Ad);
+
+                    switch (ad.vastType) {
+                        case Invalid: {
+                            listener.didParseVAST(startAd);
+                            break;
+                        }
+                        case InLine: {
+                            ad.sumAd(startAd);
+                            listener.didParseVAST(ad);
+                            break;
+                        }
+                        case Wrapper: {
+                            recursiveParse(ad.vastRedirect, ad, listener);
+                            break;
+                        }
+                    }
+
+                } catch (ParserConfigurationException | IOException | SAXException e) {
+                    listener.didParseVAST(startAd);
+                }
+            }
+        });
     }
 
     /**
@@ -47,88 +106,88 @@ public class SAVASTParser {
      * @param url       vast URL
      * @param listener  listener copy
      */
-    public void parseVAST(String url, final SAVASTParserInterface listener) {
-
-        // get a local copy of the listener and make sure it's not null
-        final SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
-
-        // create the header
-        JSONObject header = SAJsonParser.newObject(new Object[]{
-                "Content-Type", "application/json",
-                "User-Agent", SAUtils.getUserAgent(context)
-        });
-
-        final SANetwork network = new SANetwork();
-        network.sendGET(context, url, new JSONObject(), header, new SANetworkInterface() {
-            /**
-             * Overridden SANetworkInterface method in which I try to parse the VAST response
-             *
-             * @param status        status of the GET request
-             * @param VASTString    VAST string
-             * @param success       success status
-             */
-            @Override
-            public void response(int status, String VASTString, boolean success) {
-
-                // in case of failure return a basic VAST Ad
-                if (!success) {
-                    localListener.didParseVAST(new SAVASTAd());
-                }
-                // in case of success try to parse the document
-                else {
-                    try {
-                        // use the XML parser to parse this
-                        Document document = SAXMLParser.parseXML(VASTString);
-
-                        // get the VAST ad
-                        Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, "Ad");
-
-                        // in case of error (could not find an Ad XML Element, for example)
-                        if (Ad == null) {
-                            localListener.didParseVAST(new SAVASTAd());
-                            return;
-                        }
-
-                        // finally parse the ad XML into a SAVASTAd object
-                        final SAVASTAd ad = parseAdXML(Ad);
-
-                        // inline case
-                        if (ad.vastType == SAVASTAdType.InLine) {
-                            localListener.didParseVAST(ad);
-                        }
-                        // wrapper case
-                        else if (ad.vastType == SAVASTAdType.Wrapper) {
-                            parseVAST(ad.vastRedirect, new SAVASTParserInterface() {
-                                /**
-                                 * Overridden implementation of the SAVASTParserInterface method.
-                                 * In this case we parse the Wrapper tag again and
-                                 * we sum the two ads.
-                                 *
-                                 * @param wrapper the next ad in the chain
-                                 */
-                                @Override
-                                public void didParseVAST(SAVASTAd wrapper) {
-                                    // sum ads after their own internal logic
-                                    ad.sumAd(wrapper);
-
-                                    // respond with the summed ad
-                                    localListener.didParseVAST(ad);
-                                }
-                            });
-                        }
-                        // some other invalid case
-                        else {
-                            localListener.didParseVAST(new SAVASTAd());
-                        }
-                    }
-                    // in case of error just send the same empty ad
-                    catch (ParserConfigurationException | IOException | SAXException e) {
-                        localListener.didParseVAST(new SAVASTAd());
-                    }
-                }
-            }
-        });
-    }
+//    public void parseVAST(String url, final SAVASTParserInterface listener) {
+//
+//        // get a local copy of the listener and make sure it's not null
+//        final SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
+//
+//        // create the header
+//        JSONObject header = SAJsonParser.newObject(new Object[]{
+//                "Content-Type", "application/json",
+//                "User-Agent", SAUtils.getUserAgent(context)
+//        });
+//
+//        final SANetwork network = new SANetwork();
+//        network.sendGET(context, url, new JSONObject(), header, new SANetworkInterface() {
+//            /**
+//             * Overridden SANetworkInterface method in which I try to parse the VAST response
+//             *
+//             * @param status        status of the GET request
+//             * @param VASTString    VAST string
+//             * @param success       success status
+//             */
+//            @Override
+//            public void response(int status, String VASTString, boolean success) {
+//
+//                // in case of failure return a basic VAST Ad
+//                if (!success) {
+//                    localListener.didParseVAST(new SAVASTAd());
+//                }
+//                // in case of success try to parse the document
+//                else {
+//                    try {
+//                        // use the XML parser to parse this
+//                        Document document = SAXMLParser.parseXML(VASTString);
+//
+//                        // get the VAST ad
+//                        Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, "Ad");
+//
+//                        // in case of error (could not find an Ad XML Element, for example)
+//                        if (Ad == null) {
+//                            localListener.didParseVAST(new SAVASTAd());
+//                            return;
+//                        }
+//
+//                        // finally parse the ad XML into a SAVASTAd object
+//                        final SAVASTAd ad = parseAdXML(Ad);
+//
+//                        // inline case
+//                        if (ad.vastType == SAVASTAdType.InLine) {
+//                            localListener.didParseVAST(ad);
+//                        }
+//                        // wrapper case
+//                        else if (ad.vastType == SAVASTAdType.Wrapper) {
+//                            parseVAST(ad.vastRedirect, new SAVASTParserInterface() {
+//                                /**
+//                                 * Overridden implementation of the SAVASTParserInterface method.
+//                                 * In this case we parse the Wrapper tag again and
+//                                 * we sum the two ads.
+//                                 *
+//                                 * @param wrapper the next ad in the chain
+//                                 */
+//                                @Override
+//                                public void didParseVAST(SAVASTAd wrapper) {
+//                                    // sum ads after their own internal logic
+//                                    ad.sumAd(wrapper);
+//
+//                                    // respond with the summed ad
+//                                    localListener.didParseVAST(ad);
+//                                }
+//                            });
+//                        }
+//                        // some other invalid case
+//                        else {
+//                            localListener.didParseVAST(new SAVASTAd());
+//                        }
+//                    }
+//                    // in case of error just send the same empty ad
+//                    catch (ParserConfigurationException | IOException | SAXException e) {
+//                        localListener.didParseVAST(new SAVASTAd());
+//                    }
+//                }
+//            }
+//        });
+//    }
 
     /**
      * Method that parses an XML containing a VAST ad into a SAVASTAd object
