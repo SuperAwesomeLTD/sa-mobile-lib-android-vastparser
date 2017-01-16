@@ -170,9 +170,14 @@ public class SAVASTParser_Local_Tests extends ApplicationTestCase<Application> {
             SAVASTAd ad = parser.parseAdXML(Ad);
             assertNotNull(ad);
 
-            String expected_mediaUrl = "https://s3-eu-west-1.amazonaws.com/sb-ads-video-transcoded/c0sKSRTuPu8dDkok2HQTnLS1k3A6vL6c.mp4";
             SAVASTAdType expected_vastType = SAVASTAdType.InLine;
             int expected_vastEventsSize = 6;
+            int expected_mediaListSize = 1;
+            String expected_mediaUrl = "https://s3-eu-west-1.amazonaws.com/sb-ads-video-transcoded/c0sKSRTuPu8dDkok2HQTnLS1k3A6vL6c.mp4";
+            int expected_bitrate = 720;
+            int expected_width = 600;
+            int expected_height = 480;
+
             String[] expected_types = {
                 "error", "impression", "click_through", "creativeView", "start", "firstQuartile"
             };
@@ -185,17 +190,25 @@ public class SAVASTParser_Local_Tests extends ApplicationTestCase<Application> {
                     "https://ads.staging.superawesome.tv/v2/video/tracking?event=firstQuartile&placement=544&creative=5728&line_item=1022&sdkVersion=unknown&rnd=2560539&prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&device=web&country=GB"
             };
 
-            assertNotNull(ad.mediaUrl);
-            assertEquals(expected_mediaUrl, ad.mediaUrl);
             assertEquals(expected_vastType, ad.vastType);
             assertNull(ad.vastRedirect);
             assertNotNull(ad.vastEvents);
+            assertNotNull(ad.mediaList);
             assertEquals(expected_vastEventsSize, ad.vastEvents.size());
+            assertEquals(expected_mediaListSize, ad.mediaList.size());
 
             for (int i = 0; i < ad.vastEvents.size(); i++) {
                 assertEquals(expected_types[i], ad.vastEvents.get(i).event);
                 assertEquals(expected_urls[i], ad.vastEvents.get(i).URL);
             }
+
+            SAVASTMedia savastMedia = ad.mediaList.get(0);
+            assertNotNull(savastMedia);
+            assertTrue(savastMedia.isValid());
+            assertEquals(expected_mediaUrl, savastMedia.mediaUrl);
+            assertEquals(expected_bitrate, savastMedia.bitrate);
+            assertEquals(expected_width, savastMedia.width);
+            assertEquals(expected_height, savastMedia.height);
 
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();

@@ -12,8 +12,6 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -48,25 +46,125 @@ public class SAVASTParser {
         });
     }
 
+    /**
+     * Method that starts the VAST parsing by calling the internal recursive parsing method
+     *
+     * @param url       the initial VAST url to call
+     * @param listener  a copy of the SAVASTParserInterface listener that the class / method sends
+     *                  callbacks to the library user
+     */
     public void parseVAST (String url, final SAVASTParserInterface listener) {
-        SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
-        recursiveParse(url, new SAVASTAd(), localListener);
+        // make sure the local listener is never null so I don't have to do checks upon checks
+        final SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
+
+        // start the recursive method
+        recursiveParse(url, new SAVASTAd(), new SAVASTParserInterface() {
+            /**
+             * Overridden SAVASTParserInterface implementation in which finally the whole parser
+             * has produced a SAVASTAd of sorts (might or might not be valid) and I have to get
+             * a valid media out of it
+             *
+             * @param ad the returned ad
+             */
+            @Override
+            public void didParseVAST(SAVASTAd ad) {
+
+                SAVASTMedia minMedia = null;
+                SAVASTMedia maxMedia = null;
+                SAVASTMedia medMedia = null;
+
+                // get the min media
+                for (SAVASTMedia media : ad.mediaList) {
+                    if (minMedia == null || (media.bitrate < minMedia.bitrate)) {
+                        minMedia = media;
+                    }
+                }
+                // get the max media
+                for (SAVASTMedia media : ad.mediaList) {
+                    if (maxMedia == null || (media.bitrate > maxMedia.bitrate)) {
+                        maxMedia = media;
+                    }
+                }
+                // get everything in between
+                for (SAVASTMedia media : ad.mediaList) {
+                    if (media != minMedia && media != maxMedia) {
+                        medMedia = media;
+                    }
+                }
+
+                // get media Url based on connection type
+                SAUtils.SAConnectionType connectionType = SAUtils.getNetworkConnectivity(context);
+                switch (connectionType) {
+
+                    // try to get the lowest media possible
+                    case cellular_unknown:
+                    case cellular_2g: {
+                        ad.mediaUrl = minMedia != null ? minMedia.mediaUrl : null;
+                        break;
+                    }
+                    // try to get one of the medium media possible
+                    case cellular_3g: {
+                        ad.mediaUrl = medMedia != null ? medMedia.mediaUrl : null;
+                        break;
+                    }
+                    // try to get the best media possible
+                    case unknown:
+                    case ethernet:
+                    case wifi:
+                    case cellular_4g: {
+                        ad.mediaUrl = maxMedia != null ? maxMedia.mediaUrl : null;
+                        break;
+                    }
+                }
+
+                // if somehow all of that has failed, just get the last element of the list
+                if (ad.mediaUrl == null && ad.mediaList.size() >= 1) {
+                    ad.mediaUrl = ad.mediaList.get(ad.mediaList.size() - 1).mediaUrl;
+                }
+
+                // pass this forward
+                localListener.didParseVAST(ad);
+            }
+        });
     }
 
 
-    public void recursiveParse(String url, final SAVASTAd startAd, final SAVASTParserInterface listener) {
+    /**
+     * Recursive method that handles all the VAST parsing
+     *
+     * @param url       url to get the vast from
+     * @param startAd   ad that gets passed down
+     * @param listener  a copy of the listener, which is never null at this point, thanks to the
+     *                  "parseVAST" public method
+     */
+    private void recursiveParse(String url, final SAVASTAd startAd, final SAVASTParserInterface listener) {
 
         final SANetwork network = new SANetwork();
         network.sendGET(context, url, query, header, new SANetworkInterface() {
+            /**
+             * Overridden SANetworkInterface method that deals with the network result - in this
+             * case parsing a String payload that should contain valid VAST XML
+             *
+             * @param status    current status of the operation
+             * @param vast      VAST XML as a string
+             * @param success   whether the network request was successful or not
+             */
             @Override
             public void response(int status, String vast, boolean success) {
 
+                // if not successful just return the ad as it is 'because definetly something
+                // "bad" happened
                 if (!success) {
                     listener.didParseVAST(startAd);
                 }
+                // else try to parse the XML data
                 else try {
+
+                    // parse the Document using the XML parser
                     Document document = SAXMLParser.parseXML(vast);
 
+                    // get only the first XML Ad found in the VAST tag. don't bother at the moment
+                    // with VAST strings that have multiple ads in them
                     Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, "Ad");
 
                     if (Ad == null) {
@@ -74,120 +172,37 @@ public class SAVASTParser {
                         return;
                     }
 
+                    // use the internal "parseAdXML" method to form an SAVASTAd object
                     SAVASTAd ad = parseAdXML(Ad);
 
                     switch (ad.vastType) {
+                        // if it's invalid, return the start a
                         case Invalid: {
                             listener.didParseVAST(startAd);
                             break;
                         }
+                        // if it's inline, then I'm at the end of the VAST chain, I sum up ads and return
                         case InLine: {
                             ad.sumAd(startAd);
                             listener.didParseVAST(ad);
                             break;
                         }
+                        // if it's a wrapper, I sum up what I have and call the method recursively
                         case Wrapper: {
+                            ad.sumAd(startAd);
                             recursiveParse(ad.vastRedirect, ad, listener);
                             break;
                         }
                     }
 
                 } catch (ParserConfigurationException | IOException | SAXException e) {
+                    // if there's an XML error, again assume it all went to shit and don't
+                    // bother summing ads or anything, just pass the start ad as it is
                     listener.didParseVAST(startAd);
                 }
             }
         });
     }
-
-    /**
-     * Main method of the parser, that will take a VAST URL and return a SAVASTAd object
-     * with the help of a SAVASTParserInterface listener
-     *
-     * @param url       vast URL
-     * @param listener  listener copy
-     */
-//    public void parseVAST(String url, final SAVASTParserInterface listener) {
-//
-//        // get a local copy of the listener and make sure it's not null
-//        final SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
-//
-//        // create the header
-//        JSONObject header = SAJsonParser.newObject(new Object[]{
-//                "Content-Type", "application/json",
-//                "User-Agent", SAUtils.getUserAgent(context)
-//        });
-//
-//        final SANetwork network = new SANetwork();
-//        network.sendGET(context, url, new JSONObject(), header, new SANetworkInterface() {
-//            /**
-//             * Overridden SANetworkInterface method in which I try to parse the VAST response
-//             *
-//             * @param status        status of the GET request
-//             * @param VASTString    VAST string
-//             * @param success       success status
-//             */
-//            @Override
-//            public void response(int status, String VASTString, boolean success) {
-//
-//                // in case of failure return a basic VAST Ad
-//                if (!success) {
-//                    localListener.didParseVAST(new SAVASTAd());
-//                }
-//                // in case of success try to parse the document
-//                else {
-//                    try {
-//                        // use the XML parser to parse this
-//                        Document document = SAXMLParser.parseXML(VASTString);
-//
-//                        // get the VAST ad
-//                        Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, "Ad");
-//
-//                        // in case of error (could not find an Ad XML Element, for example)
-//                        if (Ad == null) {
-//                            localListener.didParseVAST(new SAVASTAd());
-//                            return;
-//                        }
-//
-//                        // finally parse the ad XML into a SAVASTAd object
-//                        final SAVASTAd ad = parseAdXML(Ad);
-//
-//                        // inline case
-//                        if (ad.vastType == SAVASTAdType.InLine) {
-//                            localListener.didParseVAST(ad);
-//                        }
-//                        // wrapper case
-//                        else if (ad.vastType == SAVASTAdType.Wrapper) {
-//                            parseVAST(ad.vastRedirect, new SAVASTParserInterface() {
-//                                /**
-//                                 * Overridden implementation of the SAVASTParserInterface method.
-//                                 * In this case we parse the Wrapper tag again and
-//                                 * we sum the two ads.
-//                                 *
-//                                 * @param wrapper the next ad in the chain
-//                                 */
-//                                @Override
-//                                public void didParseVAST(SAVASTAd wrapper) {
-//                                    // sum ads after their own internal logic
-//                                    ad.sumAd(wrapper);
-//
-//                                    // respond with the summed ad
-//                                    localListener.didParseVAST(ad);
-//                                }
-//                            });
-//                        }
-//                        // some other invalid case
-//                        else {
-//                            localListener.didParseVAST(new SAVASTAd());
-//                        }
-//                    }
-//                    // in case of error just send the same empty ad
-//                    catch (ParserConfigurationException | IOException | SAXException e) {
-//                        localListener.didParseVAST(new SAVASTAd());
-//                    }
-//                }
-//            }
-//        });
-//    }
 
     /**
      * Method that parses an XML containing a VAST ad into a SAVASTAd object
@@ -278,80 +293,17 @@ public class SAVASTParser {
             }
         });
 
-        // get media files
-
-        final List<SAVASTMedia> mediaFiles = new ArrayList<>();
-        final SAVASTMedia[] defaultMedia = {null};
+        // append only valid, mp4 type ads
 
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "MediaFile", new SAXMLParser.SAXMLIterator() {
             @Override
             public void foundElement(Element e) {
                 SAVASTMedia media = parseMediaXML(e);
-                if (media.type.contains("mp4") || media.type.contains(".mp4")) {
-                    mediaFiles.add(media);
-                    defaultMedia[0] = media;
+                if ((media.type.contains("mp4") || media.type.contains(".mp4")) && media.isValid()) {
+                    ad.mediaList.add(media);
                 }
             }
         });
-
-        // depending on the type of connection, chose an appropriate media file
-        if (mediaFiles.size() >= 1 && defaultMedia[0] != null) {
-            // get the videos at different bit rates
-            List<SAVASTMedia> bitrate360 = new ArrayList<>();
-            for (SAVASTMedia m : mediaFiles) {
-                if (m.bitrate == 360) {
-                    bitrate360.add(m);
-                }
-            }
-            List<SAVASTMedia> bitrate540 = new ArrayList<>();
-            for (SAVASTMedia m : mediaFiles) {
-                if (m.bitrate == 540) {
-                    bitrate540.add(m);
-                }
-            }
-            List<SAVASTMedia> bitrate720 = new ArrayList<>();
-            for (SAVASTMedia m : mediaFiles) {
-                if (m.bitrate == 720) {
-                    bitrate720.add(m);
-                }
-            }
-
-            SAVASTMedia media360 = bitrate360.size() >= 1 ? bitrate360.get(0) : new SAVASTMedia();
-            SAVASTMedia media540 = bitrate540.size() >= 1 ? bitrate540.get(0) : new SAVASTMedia();
-            SAVASTMedia media720 = bitrate720.size() >= 1 ? bitrate720.get(0) : new SAVASTMedia();
-
-            SAUtils.SAConnectionType connectionType = SAUtils.getNetworkConnectivity(context);
-
-            // when connection is:
-            //  1) cellular unknown
-            //  2) 2g
-            // try to get the lowest media possible
-            if (connectionType == SAUtils.SAConnectionType.cellular_unknown ||
-                    connectionType == SAUtils.SAConnectionType.cellular_2g) {
-                ad.mediaUrl = media360.mediaUrl;
-            }
-            // when connection is:
-            //  1) 3g
-            // try to get the medium media
-            else if (connectionType == SAUtils.SAConnectionType.cellular_3g) {
-                ad.mediaUrl = media540.mediaUrl;
-            }
-            // when connection is:
-            //  1) unknown
-            //  2) 4g
-            //  3) wifi
-            //  4) ethernet
-            // try to get the best media available
-            else {
-                ad.mediaUrl = media720.mediaUrl;
-            }
-        }
-
-        // if somehow no media was added (because of legacy VAST)
-        // then just add the default media (which should be the 720 one)
-        if (ad.mediaUrl == null && defaultMedia[0] != null) {
-            ad.mediaUrl = defaultMedia[0].mediaUrl;
-        }
 
         return ad;
     }

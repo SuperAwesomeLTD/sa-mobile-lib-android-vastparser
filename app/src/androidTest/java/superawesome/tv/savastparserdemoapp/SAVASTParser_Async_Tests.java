@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.Looper;
 import android.test.ApplicationTestCase;
 import android.test.suitebuilder.annotation.LargeTest;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
     }
 
     // number of async tests to run!!!
-    private final static int TESTS = 6;
+    private final static int TESTS = 7;
 
     @LargeTest
     public void testVASTTag1 () {
@@ -42,6 +43,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
         String vast4 = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST4.0.xml";
         String vast5 = "hshsa/..saas";
         String vast6 = null;
+        String vast7 = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST5.0.xml";
 
         parser.parseVAST(vast1, new SAVASTParserInterface() {
             @Override
@@ -198,6 +200,52 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertNull(ad.vastRedirect);
                 assertNotNull(ad.vastEvents);
                 assertEquals(expected_vastEventsL, ad.vastEvents.size());
+
+                // count down & quit
+                latch.countDown();
+                if (latch.getCount() == 0) {
+                    Looper.myLooper().quit();
+                }
+            }
+        });
+
+        parser.parseVAST(vast7, new SAVASTParserInterface() {
+            @Override
+            public void didParseVAST(SAVASTAd ad) {
+
+                Log.d("SuperAwesome", ad.writeToJson().toString());
+
+                assertNotNull(ad);
+                assertNotNull(ad.mediaUrl);
+
+                String expected_mediaURL = "https://ads.superawesome.tv/v2/demo_images/video.mp4";
+                int expected_vastEventsL = 30;
+                int expected_errorL = 2;
+                int expected_impressionL = 2;
+                int expected_click_throughL = 0;
+                int expected_click_trackingL = 4;
+
+                assertNotNull(ad.mediaUrl);
+                assertEquals(expected_mediaURL, ad.mediaUrl);
+                assertNotNull(ad.vastEvents);
+                assertEquals(expected_vastEventsL, ad.vastEvents.size());
+
+                List<SATracking> errors = new ArrayList<>();
+                List<SATracking> impressions = new ArrayList<>();
+                List<SATracking> clicks_tracking = new ArrayList<>();
+                List<SATracking> click_through = new ArrayList<>();
+
+                for (SATracking tracking : ad.vastEvents) {
+                    if (tracking.event.equals("error")) errors.add(tracking);
+                    if (tracking.event.equals("impression")) impressions.add(tracking);
+                    if (tracking.event.equals("click_tracking")) clicks_tracking.add(tracking);
+                    if (tracking.event.equals("click_through")) click_through.add(tracking);
+                }
+
+                assertEquals(expected_errorL, errors.size());
+                assertEquals(expected_impressionL, impressions.size());
+                assertEquals(expected_click_trackingL, clicks_tracking.size());
+                assertEquals(expected_click_throughL, click_through.size());
 
                 // count down & quit
                 latch.countDown();
