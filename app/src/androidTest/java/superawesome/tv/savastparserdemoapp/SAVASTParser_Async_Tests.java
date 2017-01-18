@@ -47,7 +47,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
 
         parser.parseVAST(vast1, new SAVASTParserInterface() {
             @Override
-            public void didParseVAST(SAVASTAd ad) {
+            public void saDidParseVAST(SAVASTAd ad) {
 
                 String expected_mediaUrl = "https://ads.superawesome.tv/v2/demo_images/video.mp4";
                 int expected_vastEventsL = 15;
@@ -87,7 +87,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
 
         parser.parseVAST(vast2, new SAVASTParserInterface() {
             @Override
-            public void didParseVAST(SAVASTAd ad) {
+            public void saDidParseVAST(SAVASTAd ad) {
 
                 assertNotNull(ad);
                 assertNotNull(ad.mediaUrl);
@@ -131,7 +131,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
 
         parser.parseVAST(vast3, new SAVASTParserInterface() {
             @Override
-            public void didParseVAST(SAVASTAd ad) {
+            public void saDidParseVAST(SAVASTAd ad) {
 
                 int expected_vastEventsL = 21;
 
@@ -151,7 +151,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
 
         parser.parseVAST(vast4, new SAVASTParserInterface() {
             @Override
-            public void didParseVAST(SAVASTAd ad) {
+            public void saDidParseVAST(SAVASTAd ad) {
 
                 int expected_vastEventsL = 0;
 
@@ -171,7 +171,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
 
         parser.parseVAST(vast5, new SAVASTParserInterface() {
             @Override
-            public void didParseVAST(SAVASTAd ad) {
+            public void saDidParseVAST(SAVASTAd ad) {
 
                 int expected_vastEventsL = 0;
 
@@ -191,7 +191,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
 
         parser.parseVAST(vast6, new SAVASTParserInterface() {
             @Override
-            public void didParseVAST(SAVASTAd ad) {
+            public void saDidParseVAST(SAVASTAd ad) {
 
                 int expected_vastEventsL = 0;
 
@@ -211,7 +211,7 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
 
         parser.parseVAST(vast7, new SAVASTParserInterface() {
             @Override
-            public void didParseVAST(SAVASTAd ad) {
+            public void saDidParseVAST(SAVASTAd ad) {
 
                 Log.d("SuperAwesome", ad.writeToJson().toString());
 

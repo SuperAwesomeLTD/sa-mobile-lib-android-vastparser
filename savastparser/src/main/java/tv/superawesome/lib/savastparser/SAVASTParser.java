@@ -24,6 +24,9 @@ import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
 import tv.superawesome.lib.sautils.SAUtils;
 
+/**
+ * Class that abstracts away the complexities of parsing a VAST XML response
+ */
 public class SAVASTParser {
 
     // private context
@@ -55,7 +58,7 @@ public class SAVASTParser {
      */
     public void parseVAST (String url, final SAVASTParserInterface listener) {
         // make sure the local listener is never null so I don't have to do checks upon checks
-        final SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void didParseVAST(SAVASTAd ad) {}};
+        final SAVASTParserInterface localListener = listener != null ? listener : new SAVASTParserInterface() {@Override public void saDidParseVAST(SAVASTAd ad) {}};
 
         // start the recursive method
         recursiveParse(url, new SAVASTAd(), new SAVASTParserInterface() {
@@ -67,7 +70,7 @@ public class SAVASTParser {
              * @param ad the returned ad
              */
             @Override
-            public void didParseVAST(SAVASTAd ad) {
+            public void saDidParseVAST(SAVASTAd ad) {
 
                 SAVASTMedia minMedia = null;
                 SAVASTMedia maxMedia = null;
@@ -123,7 +126,7 @@ public class SAVASTParser {
                 }
 
                 // pass this forward
-                localListener.didParseVAST(ad);
+                localListener.saDidParseVAST(ad);
             }
         });
     }
@@ -150,12 +153,12 @@ public class SAVASTParser {
              * @param success   whether the network request was successful or not
              */
             @Override
-            public void response(int status, String vast, boolean success) {
+            public void saDidGetResponse(int status, String vast, boolean success) {
 
                 // if not successful just return the ad as it is 'because definetly something
                 // "bad" happened
                 if (!success) {
-                    listener.didParseVAST(startAd);
+                    listener.saDidParseVAST(startAd);
                 }
                 // else try to parse the XML data
                 else try {
@@ -168,7 +171,7 @@ public class SAVASTParser {
                     Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, "Ad");
 
                     if (Ad == null) {
-                        listener.didParseVAST(startAd);
+                        listener.saDidParseVAST(startAd);
                         return;
                     }
 
@@ -178,13 +181,13 @@ public class SAVASTParser {
                     switch (ad.vastType) {
                         // if it's invalid, return the start a
                         case Invalid: {
-                            listener.didParseVAST(startAd);
+                            listener.saDidParseVAST(startAd);
                             break;
                         }
                         // if it's inline, then I'm at the end of the VAST chain, I sum up ads and return
                         case InLine: {
                             ad.sumAd(startAd);
-                            listener.didParseVAST(ad);
+                            listener.saDidParseVAST(ad);
                             break;
                         }
                         // if it's a wrapper, I sum up what I have and call the method recursively
@@ -198,7 +201,7 @@ public class SAVASTParser {
                 } catch (ParserConfigurationException | IOException | SAXException e) {
                     // if there's an XML error, again assume it all went to shit and don't
                     // bother summing ads or anything, just pass the start ad as it is
-                    listener.didParseVAST(startAd);
+                    listener.saDidParseVAST(startAd);
                 }
             }
         });
@@ -231,7 +234,7 @@ public class SAVASTParser {
         // get errors
         SAXMLParser.searchSiblingsAndChildrenOf(adElement, "Error", new SAXMLParser.SAXMLIterator() {
             @Override
-            public void foundElement(Element e) {
+            public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
                 tracking.event = "error";
                 tracking.URL = e.getTextContent();
@@ -242,7 +245,7 @@ public class SAVASTParser {
         // get impressions
         SAXMLParser.searchSiblingsAndChildrenOf(adElement, "Impression", new SAXMLParser.SAXMLIterator() {
             @Override
-            public void foundElement(Element e) {
+            public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
                 tracking.event = "impression";
                 tracking.URL = e.getTextContent();
@@ -255,7 +258,7 @@ public class SAVASTParser {
 
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "ClickThrough", new SAXMLParser.SAXMLIterator() {
             @Override
-            public void foundElement(Element e) {
+            public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
                 tracking.event = "click_through";
                 tracking.URL = e.getTextContent().replace("&amp;", "&").replace("%3A", ":").replace("%2F", "/");
@@ -265,7 +268,7 @@ public class SAVASTParser {
 
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "ClickTracking", new SAXMLParser.SAXMLIterator() {
             @Override
-            public void foundElement(Element e) {
+            public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
                 tracking.event = "click_tracking";
                 tracking.URL = e.getTextContent();
@@ -275,7 +278,7 @@ public class SAVASTParser {
 
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "CustomClicks", new SAXMLParser.SAXMLIterator() {
             @Override
-            public void foundElement(Element e) {
+            public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
                 tracking.event = "custom_clicks";
                 tracking.URL = e.getTextContent();
@@ -285,7 +288,7 @@ public class SAVASTParser {
 
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "Tracking", new SAXMLParser.SAXMLIterator() {
             @Override
-            public void foundElement(Element e) {
+            public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
                 tracking.event = e.getAttribute("event");
                 tracking.URL = e.getTextContent();
@@ -297,7 +300,7 @@ public class SAVASTParser {
 
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "MediaFile", new SAXMLParser.SAXMLIterator() {
             @Override
-            public void foundElement(Element e) {
+            public void saDidFindXMLElement(Element e) {
                 SAVASTMedia media = parseMediaXML(e);
                 if ((media.type.contains("mp4") || media.type.contains(".mp4")) && media.isValid()) {
                     ad.mediaList.add(media);

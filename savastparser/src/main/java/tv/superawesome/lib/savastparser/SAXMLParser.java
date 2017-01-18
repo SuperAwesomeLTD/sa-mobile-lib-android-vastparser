@@ -20,6 +20,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * Class that abstracts away the complexities of XML parsing into a series of utility methods
+ */
 public class SAXMLParser {
 
     /**
@@ -44,7 +47,9 @@ public class SAXMLParser {
     }
 
     /**
-     * Private function that makes the most generic search
+     * Method that makes a search in the current node's siblings and children by a
+     * given "name" string parameter.
+     * It will return the result into the list of XML elements given as paramter.
      *
      * @param node  the XML parent node
      * @param name  the XML name ot search for
@@ -94,7 +99,8 @@ public class SAXMLParser {
     }
 
     /**
-     * Public search function that returns a List of XML elements
+     * Method that returns a list of XML elements after performing a thorough search of all
+     * the node parameter's siblings and children, by a given "name".
      *
      * @param node  the parent node
      * @param name  the name to search for
@@ -107,7 +113,8 @@ public class SAXMLParser {
     }
 
     /**
-     * The same function as above, but with an iterator block
+     * Method that iterates over each children or sibling of the given XML node paramter.
+     * The block is a method with one XML element parameter.
      *
      * @param node  the XML parent node
      * @param name  the name of the XML element
@@ -116,12 +123,13 @@ public class SAXMLParser {
     public static void  searchSiblingsAndChildrenOf(Node node, String name, SAXMLIterator block) {
         List<Element> list = searchSiblingsAndChildrenOf(node, name);
         for (Element aList : list) {
-            block.foundElement(aList);
+            block.saDidFindXMLElement(aList);
         }
     }
 
     /**
-     * Finds only the first instance of a XML element with given name
+     * Finds only the first instance of a XML element with given name by searching in all of
+     * the node parameter's siblings and children.
      *
      * @param node  the parent node
      * @param name  the name to search for
@@ -137,7 +145,7 @@ public class SAXMLParser {
     }
 
     /**
-     * Function that checks if in all children and siblings of a XML node, there exists
+     * Method that checks if in all children and siblings of a XML node, there exists
      * at least one element with given name
      *
      * @param node  parent XML node
@@ -158,6 +166,6 @@ public class SAXMLParser {
          * Function that needs to be implemented by the XML Parser
          * @param e XML element as callback return parameter
          */
-        void foundElement(Element e);
+        void saDidFindXMLElement (Element e);
     }
 }

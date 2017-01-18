@@ -17,6 +17,6 @@ public interface SAVASTParserInterface {
      *
      * @param ad the returned ad
      */
-    void didParseVAST(SAVASTAd ad);
+    void saDidParseVAST(SAVASTAd ad);
 }
 

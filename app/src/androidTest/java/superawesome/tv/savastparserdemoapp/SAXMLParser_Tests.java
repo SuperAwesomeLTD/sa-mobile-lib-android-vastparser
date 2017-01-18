@@ -213,7 +213,7 @@ public class SAXMLParser_Tests extends ApplicationTestCase<Application> {
             final List<Element> errors = new ArrayList<>();
             SAXMLParser.searchSiblingsAndChildrenOf(document, "Error", new SAXMLParser.SAXMLIterator() {
                 @Override
-                public void foundElement(Element e) {
+                public void saDidFindXMLElement(Element e) {
                     assertNotNull(e);
                     errors.add(e);
                 }
@@ -225,7 +225,7 @@ public class SAXMLParser_Tests extends ApplicationTestCase<Application> {
             final List<Element> impressions = new ArrayList<>();
             SAXMLParser.searchSiblingsAndChildrenOf(document, "Impression", new SAXMLParser.SAXMLIterator() {
                 @Override
-                public void foundElement(Element e) {
+                public void saDidFindXMLElement(Element e) {
                     assertNotNull(e);
                     impressions.add(e);
                 }
@@ -237,7 +237,7 @@ public class SAXMLParser_Tests extends ApplicationTestCase<Application> {
             final List<Element> clicks = new ArrayList<>();
             SAXMLParser.searchSiblingsAndChildrenOf(document, "Click", new SAXMLParser.SAXMLIterator() {
                 @Override
-                public void foundElement(Element e) {
+                public void saDidFindXMLElement(Element e) {
                     assertNotNull(e);
                     clicks.add(e);
                 }
