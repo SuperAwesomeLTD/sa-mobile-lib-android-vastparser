@@ -3,5 +3,5 @@ wrapper/*
 .gradle/*
 local.properties
 savastparser/java_pid*
-app/java_pid*
 java_pid*
+app/java_pid*
