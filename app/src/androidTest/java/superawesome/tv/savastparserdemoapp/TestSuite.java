@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         SAXMLParser_Tests.class,
         SAVASTParser_Local_Tests.class,
-        SAVASTParser_Async_Tests.class
+        SAVASTParser_Async_Test.class
 })
 public class TestSuite {
 }

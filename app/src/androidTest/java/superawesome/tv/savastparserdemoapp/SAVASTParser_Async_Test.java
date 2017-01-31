@@ -1,51 +1,34 @@
 package superawesome.tv.savastparserdemoapp;
 
-import android.app.Application;
-import android.os.Looper;
-import android.test.ApplicationTestCase;
+import android.test.ActivityInstrumentationTestCase2;
+import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.LargeTest;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 import tv.superawesome.lib.samodelspace.SATracking;
 import tv.superawesome.lib.samodelspace.SAVASTAd;
 import tv.superawesome.lib.savastparser.SAVASTParser;
 import tv.superawesome.lib.savastparser.SAVASTParserInterface;
 
-public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
-    public SAVASTParser_Async_Tests() {
-        super(Application.class);
+public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<MainActivity> {
+    private static final int TIMEOUT = 2500;
+
+    public SAVASTParser_Async_Test() {
+        super("superawesome.tv.sanetworktester", MainActivity.class);
     }
 
-    // number of async tests to run!!!
-    private final static int TESTS = 7;
-
+    @UiThreadTest
     @LargeTest
-    public void testVASTTag1 () {
+    public void test1 () {
 
-        // prepare the looper
-        if (Looper.myLooper() == null) {
-            Looper.prepare();
-        }
-
-        // have a count down latch with the nr of tests
-        final CountDownLatch latch = new CountDownLatch(TESTS);
-
-        SAVASTParser parser = new SAVASTParser(getContext());
+        SAVASTParser parser = new SAVASTParser(getActivity());
         assertNotNull(parser);
 
-        String vast1 = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST1.xml";
-        String vast2 = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST2.0.xml";
-        String vast3 = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST3.0.xml";
-        String vast4 = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST4.0.xml";
-        String vast5 = "hshsa/..saas";
-        String vast6 = null;
-        String vast7 = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST5.0.xml";
+        String vast = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST1.xml";
 
-        parser.parseVAST(vast1, new SAVASTParserInterface() {
+        parser.parseVAST(vast, new SAVASTParserInterface() {
             @Override
             public void saDidParseVAST(SAVASTAd ad) {
 
@@ -76,16 +59,22 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertEquals(expected_impression, impression.URL);
                 assertNotNull(click);
                 assertEquals(expected_click, click.URL);
-
-                // count down & quit
-                latch.countDown();
-                if (latch.getCount() == 0) {
-                    Looper.myLooper().quit();
-                }
             }
         });
 
-        parser.parseVAST(vast2, new SAVASTParserInterface() {
+        sleep(TIMEOUT);
+    }
+
+    @UiThreadTest
+    @LargeTest
+    public void test2 () {
+
+        SAVASTParser parser = new SAVASTParser(getActivity());
+        assertNotNull(parser);
+
+        String vast = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST2.0.xml";
+
+        parser.parseVAST(vast, new SAVASTParserInterface() {
             @Override
             public void saDidParseVAST(SAVASTAd ad) {
 
@@ -120,16 +109,22 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertEquals(expected_impressionL, impressions.size());
                 assertEquals(expected_click_trackingL, clicks_tracking.size());
                 assertEquals(expected_click_throughL, click_through.size());
-
-                // count down & quit
-                latch.countDown();
-                if (latch.getCount() == 0) {
-                    Looper.myLooper().quit();
-                }
             }
         });
 
-        parser.parseVAST(vast3, new SAVASTParserInterface() {
+        sleep(TIMEOUT);
+    }
+
+    @UiThreadTest
+    @LargeTest
+    public void test3 () {
+
+        SAVASTParser parser = new SAVASTParser(getActivity());
+        assertNotNull(parser);
+
+        String vast = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST3.0.xml";
+
+        parser.parseVAST(vast, new SAVASTParserInterface() {
             @Override
             public void saDidParseVAST(SAVASTAd ad) {
 
@@ -140,16 +135,22 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertNotNull(ad.vastEvents);
                 assertEquals(expected_vastEventsL, ad.vastEvents.size());
                 assertNotNull(ad.vastRedirect);
-
-                // count down & quit
-                latch.countDown();
-                if (latch.getCount() == 0) {
-                    Looper.myLooper().quit();
-                }
             }
         });
 
-        parser.parseVAST(vast4, new SAVASTParserInterface() {
+        sleep(TIMEOUT);
+    }
+
+    @UiThreadTest
+    @LargeTest
+    public void test4 () {
+
+        SAVASTParser parser = new SAVASTParser(getActivity());
+        assertNotNull(parser);
+
+        String vast = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST4.0.xml";
+
+        parser.parseVAST(vast, new SAVASTParserInterface() {
             @Override
             public void saDidParseVAST(SAVASTAd ad) {
 
@@ -160,16 +161,22 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertNotNull(ad.vastEvents);
                 assertEquals(expected_vastEventsL, ad.vastEvents.size());
                 assertNull(ad.vastRedirect);
-
-                // count down & quit
-                latch.countDown();
-                if (latch.getCount() == 0) {
-                    Looper.myLooper().quit();
-                }
             }
         });
 
-        parser.parseVAST(vast5, new SAVASTParserInterface() {
+        sleep(TIMEOUT);
+    }
+
+    @UiThreadTest
+    @LargeTest
+    public void test5 () {
+
+        SAVASTParser parser = new SAVASTParser(getActivity());
+        assertNotNull(parser);
+
+        String vast = "hshsa/..saas";
+
+        parser.parseVAST(vast, new SAVASTParserInterface() {
             @Override
             public void saDidParseVAST(SAVASTAd ad) {
 
@@ -180,16 +187,22 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertNull(ad.vastRedirect);
                 assertNotNull(ad.vastEvents);
                 assertEquals(expected_vastEventsL, ad.vastEvents.size());
-
-                // count down & quit
-                latch.countDown();
-                if (latch.getCount() == 0) {
-                    Looper.myLooper().quit();
-                }
             }
         });
 
-        parser.parseVAST(vast6, new SAVASTParserInterface() {
+        sleep(TIMEOUT);
+    }
+
+    @UiThreadTest
+    @LargeTest
+    public void test6 () {
+
+        SAVASTParser parser = new SAVASTParser(getActivity());
+        assertNotNull(parser);
+
+        String vast = null;
+
+        parser.parseVAST(vast, new SAVASTParserInterface() {
             @Override
             public void saDidParseVAST(SAVASTAd ad) {
 
@@ -200,20 +213,24 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertNull(ad.vastRedirect);
                 assertNotNull(ad.vastEvents);
                 assertEquals(expected_vastEventsL, ad.vastEvents.size());
-
-                // count down & quit
-                latch.countDown();
-                if (latch.getCount() == 0) {
-                    Looper.myLooper().quit();
-                }
             }
         });
 
-        parser.parseVAST(vast7, new SAVASTParserInterface() {
+        sleep(TIMEOUT);
+    }
+
+    @UiThreadTest
+    @LargeTest
+    public void test7 () {
+
+        SAVASTParser parser = new SAVASTParser(getActivity());
+        assertNotNull(parser);
+
+        String vast = "https://raw.githubusercontent.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser/master/samples/VAST5.0.xml";
+
+        parser.parseVAST(vast, new SAVASTParserInterface() {
             @Override
             public void saDidParseVAST(SAVASTAd ad) {
-
-                Log.d("SuperAwesome", ad.writeToJson().toString());
 
                 assertNotNull(ad);
                 assertNotNull(ad.mediaUrl);
@@ -246,16 +263,17 @@ public class SAVASTParser_Async_Tests extends ApplicationTestCase<Application> {
                 assertEquals(expected_impressionL, impressions.size());
                 assertEquals(expected_click_trackingL, clicks_tracking.size());
                 assertEquals(expected_click_throughL, click_through.size());
-
-                // count down & quit
-                latch.countDown();
-                if (latch.getCount() == 0) {
-                    Looper.myLooper().quit();
-                }
             }
         });
 
-        // loopy
-        Looper.loop();
+        sleep(TIMEOUT);
+    }
+
+    private void sleep(int timeout) {
+        try {
+            Thread.sleep(timeout);
+        } catch (InterruptedException e) {
+            fail("Unexpected Timeout");
+        }
     }
 }
