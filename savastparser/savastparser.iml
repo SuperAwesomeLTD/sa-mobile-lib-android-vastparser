@@ -87,8 +87,8 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/bundles" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/tv.superawesome.lib.sajsonparser/sajsonparser/0.2.5/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/tv.superawesome.lib.samodelspace/samodelspace/0.5.8/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/tv.superawesome.lib.sajsonparser/sajsonparser/0.2.6/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/tv.superawesome.lib.samodelspace/samodelspace/0.5.9/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/tv.superawesome.lib.sanetwork/sanetwork/0.3.7/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/tv.superawesome.lib.sautils/sautils/0.3.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
@@ -108,8 +108,8 @@
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="sanetwork-0.3.7" level="project" />
-    <orderEntry type="library" exported="" name="sajsonparser-0.2.5" level="project" />
+    <orderEntry type="library" exported="" name="sajsonparser-0.2.6" level="project" />
+    <orderEntry type="library" exported="" name="samodelspace-0.5.9" level="project" />
     <orderEntry type="library" exported="" name="sautils-0.3.4" level="project" />
-    <orderEntry type="library" exported="" name="samodelspace-0.5.8" level="project" />
   </component>
 </module>
