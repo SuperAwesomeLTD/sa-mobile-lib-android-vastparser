@@ -236,7 +236,7 @@ public class SAVASTParser {
             @Override
             public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
-                tracking.event = "error";
+                tracking.event = "vast_error";
                 tracking.URL = e.getTextContent();
                 ad.vastEvents.add(tracking);
             }
@@ -247,7 +247,7 @@ public class SAVASTParser {
             @Override
             public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
-                tracking.event = "impression";
+                tracking.event = "vast_impression";
                 tracking.URL = e.getTextContent();
                 ad.vastEvents.add(tracking);
             }
@@ -260,7 +260,7 @@ public class SAVASTParser {
             @Override
             public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
-                tracking.event = "click_through";
+                tracking.event = "vast_click_through";
                 tracking.URL = e.getTextContent().replace("&amp;", "&").replace("%3A", ":").replace("%2F", "/");
                 ad.vastEvents.add(tracking);
             }
@@ -270,7 +270,7 @@ public class SAVASTParser {
             @Override
             public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
-                tracking.event = "click_tracking";
+                tracking.event = "vast_click_tracking";
                 tracking.URL = e.getTextContent();
                 ad.vastEvents.add(tracking);
             }
@@ -280,7 +280,7 @@ public class SAVASTParser {
             @Override
             public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
-                tracking.event = "custom_clicks";
+                tracking.event = "vast_custom_clicks";
                 tracking.URL = e.getTextContent();
                 ad.vastEvents.add(tracking);
             }
@@ -290,7 +290,7 @@ public class SAVASTParser {
             @Override
             public void saDidFindXMLElement(Element e) {
                 SATracking tracking = new SATracking();
-                tracking.event = e.getAttribute("event");
+                tracking.event = "vast_" + e.getAttribute("event");
                 tracking.URL = e.getTextContent();
                 ad.vastEvents.add(tracking);
             }

@@ -179,7 +179,7 @@ public class SAVASTParser_Local_Tests extends ApplicationTestCase<Application> {
             int expected_height = 480;
 
             String[] expected_types = {
-                "error", "impression", "click_through", "creativeView", "start", "firstQuartile"
+                "vast_error", "vast_impression", "vast_click_through", "vast_creativeView", "vast_start", "vast_firstQuartile"
             };
             String[] expected_urls = {
                     "https://ads.staging.superawesome.tv/v2/video/error?placement=544&amp;creative=5728&amp;line_item=1022&amp;sdkVersion=unknown&amp;rnd=7062039&amp;prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&amp;device=web&amp;country=GB&amp;code=[ERRORCODE]",

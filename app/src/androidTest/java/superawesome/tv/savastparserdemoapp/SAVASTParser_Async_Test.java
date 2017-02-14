@@ -48,9 +48,9 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 SATracking impression = null;
                 SATracking click = null;
                 for (SATracking tracking : ad.vastEvents) {
-                    if (tracking.event.equals("error")) error = tracking;
-                    if (tracking.event.equals("impression")) impression = tracking;
-                    if (tracking.event.equals("click_through")) click = tracking;
+                    if (tracking.event.equals("vast_error")) error = tracking;
+                    if (tracking.event.equals("vast_impression")) impression = tracking;
+                    if (tracking.event.equals("vast_click_through")) click = tracking;
                 }
 
                 assertNotNull(error);
@@ -99,10 +99,10 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 List<SATracking> click_through = new ArrayList<>();
 
                 for (SATracking tracking : ad.vastEvents) {
-                    if (tracking.event.equals("error")) errors.add(tracking);
-                    if (tracking.event.equals("impression")) impressions.add(tracking);
-                    if (tracking.event.equals("click_tracking")) clicks_tracking.add(tracking);
-                    if (tracking.event.equals("click_through")) click_through.add(tracking);
+                    if (tracking.event.equals("vast_error")) errors.add(tracking);
+                    if (tracking.event.equals("vast_impression")) impressions.add(tracking);
+                    if (tracking.event.equals("vast_click_tracking")) clicks_tracking.add(tracking);
+                    if (tracking.event.equals("vast_click_through")) click_through.add(tracking);
                 }
 
                 assertEquals(expected_errorL, errors.size());
@@ -253,10 +253,10 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 List<SATracking> click_through = new ArrayList<>();
 
                 for (SATracking tracking : ad.vastEvents) {
-                    if (tracking.event.equals("error")) errors.add(tracking);
-                    if (tracking.event.equals("impression")) impressions.add(tracking);
-                    if (tracking.event.equals("click_tracking")) clicks_tracking.add(tracking);
-                    if (tracking.event.equals("click_through")) click_through.add(tracking);
+                    if (tracking.event.equals("vast_error")) errors.add(tracking);
+                    if (tracking.event.equals("vast_impression")) impressions.add(tracking);
+                    if (tracking.event.equals("vast_click_tracking")) clicks_tracking.add(tracking);
+                    if (tracking.event.equals("vast_click_through")) click_through.add(tracking);
                 }
 
                 assertEquals(expected_errorL, errors.size());
