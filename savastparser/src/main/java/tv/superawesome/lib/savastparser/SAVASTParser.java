@@ -276,16 +276,6 @@ public class SAVASTParser {
             }
         });
 
-        SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "CustomClicks", new SAXMLParser.SAXMLIterator() {
-            @Override
-            public void saDidFindXMLElement(Element e) {
-                SATracking tracking = new SATracking();
-                tracking.event = "vast_custom_clicks";
-                tracking.URL = e.getTextContent();
-                ad.vastEvents.add(tracking);
-            }
-        });
-
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "Tracking", new SAXMLParser.SAXMLIterator() {
             @Override
             public void saDidFindXMLElement(Element e) {
