@@ -39,15 +39,15 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 String expected_click = "https://ads.superawesome.tv/v2/video/click?placement=30479&creative=-1&line_item=-1&sdkVersion=unknown&rnd=1809240&device=web&country=GB";
 
                 assertNotNull(ad);
-                assertNotNull(ad.mediaUrl);
-                assertEquals(expected_mediaUrl, ad.mediaUrl);
-                assertNotNull(ad.vastEvents);
-                assertEquals(expected_vastEventsL, ad.vastEvents.size());
+                assertNotNull(ad.url);
+                assertEquals(expected_mediaUrl, ad.url);
+                assertNotNull(ad.events);
+                assertEquals(expected_vastEventsL, ad.events.size());
 
                 SATracking error = null;
                 SATracking impression = null;
                 SATracking click = null;
-                for (SATracking tracking : ad.vastEvents) {
+                for (SATracking tracking : ad.events) {
                     if (tracking.event.equals("vast_error")) error = tracking;
                     if (tracking.event.equals("vast_impression")) impression = tracking;
                     if (tracking.event.equals("vast_click_through")) click = tracking;
@@ -79,7 +79,7 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
             public void saDidParseVAST(SAVASTAd ad) {
 
                 assertNotNull(ad);
-                assertNotNull(ad.mediaUrl);
+                assertNotNull(ad.url);
 
                 String expected_mediaURL = "https://ads.superawesome.tv/v2/demo_images/video.mp4";
                 int expected_vastEventsL = 40;
@@ -88,17 +88,17 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 int expected_click_throughL = 1;
                 int expected_click_trackingL = 3;
 
-                assertNotNull(ad.mediaUrl);
-                assertEquals(expected_mediaURL, ad.mediaUrl);
-                assertNotNull(ad.vastEvents);
-                assertEquals(expected_vastEventsL, ad.vastEvents.size());
+                assertNotNull(ad.url);
+                assertEquals(expected_mediaURL, ad.url);
+                assertNotNull(ad.events);
+                assertEquals(expected_vastEventsL, ad.events.size());
 
                 List<SATracking> errors = new ArrayList<>();
                 List<SATracking> impressions = new ArrayList<>();
                 List<SATracking> clicks_tracking = new ArrayList<>();
                 List<SATracking> click_through = new ArrayList<>();
 
-                for (SATracking tracking : ad.vastEvents) {
+                for (SATracking tracking : ad.events) {
                     if (tracking.event.equals("vast_error")) errors.add(tracking);
                     if (tracking.event.equals("vast_impression")) impressions.add(tracking);
                     if (tracking.event.equals("vast_click_tracking")) clicks_tracking.add(tracking);
@@ -131,10 +131,10 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 int expected_vastEventsL = 21;
 
                 assertNotNull(ad);
-                assertNull(ad.mediaUrl);
-                assertNotNull(ad.vastEvents);
-                assertEquals(expected_vastEventsL, ad.vastEvents.size());
-                assertNotNull(ad.vastRedirect);
+                assertNull(ad.url);
+                assertNotNull(ad.events);
+                assertEquals(expected_vastEventsL, ad.events.size());
+                assertNotNull(ad.redirect);
             }
         });
 
@@ -157,10 +157,10 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 int expected_vastEventsL = 0;
 
                 assertNotNull(ad);
-                assertNull(ad.mediaUrl);
-                assertNotNull(ad.vastEvents);
-                assertEquals(expected_vastEventsL, ad.vastEvents.size());
-                assertNull(ad.vastRedirect);
+                assertNull(ad.url);
+                assertNotNull(ad.events);
+                assertEquals(expected_vastEventsL, ad.events.size());
+                assertNull(ad.redirect);
             }
         });
 
@@ -183,10 +183,10 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 int expected_vastEventsL = 0;
 
                 assertNotNull(ad);
-                assertNull(ad.mediaUrl);
-                assertNull(ad.vastRedirect);
-                assertNotNull(ad.vastEvents);
-                assertEquals(expected_vastEventsL, ad.vastEvents.size());
+                assertNull(ad.url);
+                assertNull(ad.redirect);
+                assertNotNull(ad.events);
+                assertEquals(expected_vastEventsL, ad.events.size());
             }
         });
 
@@ -209,10 +209,10 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 int expected_vastEventsL = 0;
 
                 assertNotNull(ad);
-                assertNull(ad.mediaUrl);
-                assertNull(ad.vastRedirect);
-                assertNotNull(ad.vastEvents);
-                assertEquals(expected_vastEventsL, ad.vastEvents.size());
+                assertNull(ad.url);
+                assertNull(ad.redirect);
+                assertNotNull(ad.events);
+                assertEquals(expected_vastEventsL, ad.events.size());
             }
         });
 
@@ -233,7 +233,7 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
             public void saDidParseVAST(SAVASTAd ad) {
 
                 assertNotNull(ad);
-                assertNotNull(ad.mediaUrl);
+                assertNotNull(ad.url);
 
                 String expected_mediaURL = "https://ads.superawesome.tv/v2/demo_images/video.mp4";
                 int expected_vastEventsL = 30;
@@ -242,17 +242,17 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 int expected_click_throughL = 0;
                 int expected_click_trackingL = 4;
 
-                assertNotNull(ad.mediaUrl);
-                assertEquals(expected_mediaURL, ad.mediaUrl);
-                assertNotNull(ad.vastEvents);
-                assertEquals(expected_vastEventsL, ad.vastEvents.size());
+                assertNotNull(ad.url);
+                assertEquals(expected_mediaURL, ad.url);
+                assertNotNull(ad.events);
+                assertEquals(expected_vastEventsL, ad.events.size());
 
                 List<SATracking> errors = new ArrayList<>();
                 List<SATracking> impressions = new ArrayList<>();
                 List<SATracking> clicks_tracking = new ArrayList<>();
                 List<SATracking> click_through = new ArrayList<>();
 
-                for (SATracking tracking : ad.vastEvents) {
+                for (SATracking tracking : ad.events) {
                     if (tracking.event.equals("vast_error")) errors.add(tracking);
                     if (tracking.event.equals("vast_impression")) impressions.add(tracking);
                     if (tracking.event.equals("vast_click_tracking")) clicks_tracking.add(tracking);

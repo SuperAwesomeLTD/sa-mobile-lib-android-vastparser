@@ -68,7 +68,7 @@ public class SAVASTParser_Local_Tests extends ApplicationTestCase<Application> {
             assertEquals(expected_width, savastMedia.width);
             assertEquals(expected_height, savastMedia.height);
             assertEquals(expected_bitrate, savastMedia.bitrate);
-            assertEquals(expected_url, savastMedia.mediaUrl);
+            assertEquals(expected_url, savastMedia.url);
 
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
@@ -111,7 +111,7 @@ public class SAVASTParser_Local_Tests extends ApplicationTestCase<Application> {
             assertEquals(expected_width, savastMedia.width);
             assertEquals(expected_height, savastMedia.height);
             assertEquals(expected_bitrate, savastMedia.bitrate);
-            assertEquals(expected_url, savastMedia.mediaUrl);
+            assertEquals(expected_url, savastMedia.url);
 
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
@@ -190,22 +190,22 @@ public class SAVASTParser_Local_Tests extends ApplicationTestCase<Application> {
                     "https://ads.staging.superawesome.tv/v2/video/tracking?event=firstQuartile&placement=544&creative=5728&line_item=1022&sdkVersion=unknown&rnd=2560539&prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&device=web&country=GB"
             };
 
-            assertEquals(expected_vastType, ad.vastType);
-            assertNull(ad.vastRedirect);
-            assertNotNull(ad.vastEvents);
-            assertNotNull(ad.mediaList);
-            assertEquals(expected_vastEventsSize, ad.vastEvents.size());
-            assertEquals(expected_mediaListSize, ad.mediaList.size());
+            assertEquals(expected_vastType, ad.type);
+            assertNull(ad.redirect);
+            assertNotNull(ad.events);
+            assertNotNull(ad.media);
+            assertEquals(expected_vastEventsSize, ad.events.size());
+            assertEquals(expected_mediaListSize, ad.media.size());
 
-            for (int i = 0; i < ad.vastEvents.size(); i++) {
-                assertEquals(expected_types[i], ad.vastEvents.get(i).event);
-                assertEquals(expected_urls[i], ad.vastEvents.get(i).URL);
+            for (int i = 0; i < ad.events.size(); i++) {
+                assertEquals(expected_types[i], ad.events.get(i).event);
+                assertEquals(expected_urls[i], ad.events.get(i).URL);
             }
 
-            SAVASTMedia savastMedia = ad.mediaList.get(0);
+            SAVASTMedia savastMedia = ad.media.get(0);
             assertNotNull(savastMedia);
             assertTrue(savastMedia.isValid());
-            assertEquals(expected_mediaUrl, savastMedia.mediaUrl);
+            assertEquals(expected_mediaUrl, savastMedia.url);
             assertEquals(expected_bitrate, savastMedia.bitrate);
             assertEquals(expected_width, savastMedia.width);
             assertEquals(expected_height, savastMedia.height);

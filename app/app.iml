@@ -133,7 +133,7 @@
     <orderEntry type="module" module-name="savastparser" exported="" />
     <orderEntry type="library" exported="" name="sanetwork-0.3.7" level="project" />
     <orderEntry type="library" exported="" name="sajsonparser-0.2.6" level="project" />
-    <orderEntry type="library" exported="" name="samodelspace-0.5.9" level="project" />
     <orderEntry type="library" exported="" name="sautils-0.3.4" level="project" />
+    <orderEntry type="library" exported="" name="samodelspace-0.6.0" level="project" />
   </component>
 </module>

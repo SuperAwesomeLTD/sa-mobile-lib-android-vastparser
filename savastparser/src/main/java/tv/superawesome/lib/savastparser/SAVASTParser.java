@@ -77,19 +77,19 @@ public class SAVASTParser {
                 SAVASTMedia medMedia = null;
 
                 // get the min media
-                for (SAVASTMedia media : ad.mediaList) {
+                for (SAVASTMedia media : ad.media) {
                     if (minMedia == null || (media.bitrate < minMedia.bitrate)) {
                         minMedia = media;
                     }
                 }
                 // get the max media
-                for (SAVASTMedia media : ad.mediaList) {
+                for (SAVASTMedia media : ad.media) {
                     if (maxMedia == null || (media.bitrate > maxMedia.bitrate)) {
                         maxMedia = media;
                     }
                 }
                 // get everything in between
-                for (SAVASTMedia media : ad.mediaList) {
+                for (SAVASTMedia media : ad.media) {
                     if (media != minMedia && media != maxMedia) {
                         medMedia = media;
                     }
@@ -102,12 +102,12 @@ public class SAVASTParser {
                     // try to get the lowest media possible
                     case cellular_unknown:
                     case cellular_2g: {
-                        ad.mediaUrl = minMedia != null ? minMedia.mediaUrl : null;
+                        ad.url = minMedia != null ? minMedia.url : null;
                         break;
                     }
                     // try to get one of the medium media possible
                     case cellular_3g: {
-                        ad.mediaUrl = medMedia != null ? medMedia.mediaUrl : null;
+                        ad.url = medMedia != null ? medMedia.url : null;
                         break;
                     }
                     // try to get the best media possible
@@ -115,14 +115,14 @@ public class SAVASTParser {
                     case ethernet:
                     case wifi:
                     case cellular_4g: {
-                        ad.mediaUrl = maxMedia != null ? maxMedia.mediaUrl : null;
+                        ad.url = maxMedia != null ? maxMedia.url : null;
                         break;
                     }
                 }
 
                 // if somehow all of that has failed, just get the last element of the list
-                if (ad.mediaUrl == null && ad.mediaList.size() >= 1) {
-                    ad.mediaUrl = ad.mediaList.get(ad.mediaList.size() - 1).mediaUrl;
+                if (ad.url == null && ad.media.size() >= 1) {
+                    ad.url = ad.media.get(ad.media.size() - 1).url;
                 }
 
                 // pass this forward
@@ -178,7 +178,7 @@ public class SAVASTParser {
                     // use the internal "parseAdXML" method to form an SAVASTAd object
                     SAVASTAd ad = parseAdXML(Ad);
 
-                    switch (ad.vastType) {
+                    switch (ad.type) {
                         // if it's invalid, return the start a
                         case Invalid: {
                             listener.saDidParseVAST(startAd);
@@ -193,7 +193,7 @@ public class SAVASTParser {
                         // if it's a wrapper, I sum up what I have and call the method recursively
                         case Wrapper: {
                             ad.sumAd(startAd);
-                            recursiveParse(ad.vastRedirect, ad, listener);
+                            recursiveParse(ad.redirect, ad, listener);
                             break;
                         }
                     }
@@ -222,13 +222,13 @@ public class SAVASTParser {
         boolean isInLine = SAXMLParser.checkSiblingsAndChildrenOf(adElement, "InLine");
         boolean isWrapper = SAXMLParser.checkSiblingsAndChildrenOf(adElement, "Wrapper");
 
-        if (isInLine) ad.vastType = SAVASTAdType.InLine;
-        if (isWrapper) ad.vastType= SAVASTAdType.Wrapper;
+        if (isInLine) ad.type = SAVASTAdType.InLine;
+        if (isWrapper) ad.type= SAVASTAdType.Wrapper;
 
         // if it's a wrapper, assign the redirect URL
         Element vastUri = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(adElement, "VASTAdTagURI");
         if (vastUri != null) {
-            ad.vastRedirect = vastUri.getTextContent();
+            ad.redirect = vastUri.getTextContent();
         }
 
         // get errors
@@ -238,7 +238,7 @@ public class SAVASTParser {
                 SATracking tracking = new SATracking();
                 tracking.event = "vast_error";
                 tracking.URL = e.getTextContent();
-                ad.vastEvents.add(tracking);
+                ad.events.add(tracking);
             }
         });
 
@@ -249,7 +249,7 @@ public class SAVASTParser {
                 SATracking tracking = new SATracking();
                 tracking.event = "vast_impression";
                 tracking.URL = e.getTextContent();
-                ad.vastEvents.add(tracking);
+                ad.events.add(tracking);
             }
         });
 
@@ -262,7 +262,7 @@ public class SAVASTParser {
                 SATracking tracking = new SATracking();
                 tracking.event = "vast_click_through";
                 tracking.URL = e.getTextContent().replace("&amp;", "&").replace("%3A", ":").replace("%2F", "/");
-                ad.vastEvents.add(tracking);
+                ad.events.add(tracking);
             }
         });
 
@@ -272,7 +272,7 @@ public class SAVASTParser {
                 SATracking tracking = new SATracking();
                 tracking.event = "vast_click_tracking";
                 tracking.URL = e.getTextContent();
-                ad.vastEvents.add(tracking);
+                ad.events.add(tracking);
             }
         });
 
@@ -282,7 +282,7 @@ public class SAVASTParser {
                 SATracking tracking = new SATracking();
                 tracking.event = "vast_" + e.getAttribute("event");
                 tracking.URL = e.getTextContent();
-                ad.vastEvents.add(tracking);
+                ad.events.add(tracking);
             }
         });
 
@@ -293,7 +293,7 @@ public class SAVASTParser {
             public void saDidFindXMLElement(Element e) {
                 SAVASTMedia media = parseMediaXML(e);
                 if ((media.type.contains("mp4") || media.type.contains(".mp4")) && media.isValid()) {
-                    ad.mediaList.add(media);
+                    ad.media.add(media);
                 }
             }
         });
@@ -316,7 +316,7 @@ public class SAVASTParser {
         if (element == null) return media;
 
         // assign the media URL
-        media.mediaUrl = element.getTextContent().replace(" ", "");
+        media.url = element.getTextContent().replace(" ", "");
 
         // set the type attribute
         media.type = element.getAttribute("type");
