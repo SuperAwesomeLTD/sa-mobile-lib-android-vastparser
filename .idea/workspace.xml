@@ -12,19 +12,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7de0651-1578-4920-885d-1fb1cc0add8a" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/samodelspace_0_6_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/samodelspace_0_6_1.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/samodelspace_0_6_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/samodelspace_0_6_2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_4_0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/design_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/design_23_4_0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_23_4_0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_23_4_0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Async_Test.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Async_Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Local_Tests.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Local_Tests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/savastparser/build.gradle" afterPath="$PROJECT_DIR$/savastparser/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/savastparser/savastparser.iml" afterPath="$PROJECT_DIR$/savastparser/savastparser.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java" afterPath="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java" afterPath="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java" />
     </list>
     <ignored path="sa-mobile-lib-android-vastparser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -165,8 +161,8 @@
       <file leaf-file-name="TestSuite.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/TestSuite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="165">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -175,8 +171,8 @@
       <file leaf-file-name="local.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/local.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+            <state relative-caret-position="120">
+              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -205,8 +201,8 @@
       <file leaf-file-name="SAVASTParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
               <folding>
                 <element signature="e#0#121#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -404,6 +400,11 @@
                 <option name="name" value="packageReleaseRenderscript" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare tv.superawesome.lib.samodelspace:samodelspace:0.6.2" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareTvSuperawesomeLibSamodelspaceSamodelspace062Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="mergeReleaseProguardFiles" />
               </ExternalTaskPojo>
@@ -592,11 +593,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareReleaseDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare tv.superawesome.lib.samodelspace:samodelspace:0.6.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareTvSuperawesomeLibSamodelspaceSamodelspace061Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -845,6 +841,11 @@
                 <option name="name" value="check" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare tv.superawesome.lib.savastparser:savastparser:0.6.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareTvSuperawesomeLibSavastparserSavastparser060Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Run unit tests for the debug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="testDebugUnitTest" />
@@ -857,11 +858,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="jarDebugClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare tv.superawesome.lib.savastparser:savastparser:0.5.9" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareTvSuperawesomeLibSavastparserSavastparser059Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1134,6 +1130,11 @@
                 <option name="name" value="prepareComAndroidSupportTestTestingSupportLib01Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare tv.superawesome.lib.samodelspace:samodelspace:0.6.2" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareTvSuperawesomeLibSamodelspaceSamodelspace062Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="incrementalDebugJavaCompilationSafeguard" />
               </ExternalTaskPojo>
@@ -1293,11 +1294,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareReleaseDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare tv.superawesome.lib.samodelspace:samodelspace:0.6.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareTvSuperawesomeLibSamodelspaceSamodelspace061Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -1532,6 +1528,11 @@
                 <option name="name" value="check" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare tv.superawesome.lib.savastparser:savastparser:0.6.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareTvSuperawesomeLibSavastparserSavastparser060Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Run unit tests for the debug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="testDebugUnitTest" />
@@ -1544,11 +1545,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="jarDebugClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare tv.superawesome.lib.savastparser:savastparser:0.5.9" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareTvSuperawesomeLibSavastparserSavastparser059Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -1830,6 +1826,11 @@
                 <option name="name" value="packageReleaseRenderscript" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare tv.superawesome.lib.samodelspace:samodelspace:0.6.2" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/savastparser" />
+                <option name="name" value="prepareTvSuperawesomeLibSamodelspaceSamodelspace062Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/savastparser" />
                 <option name="name" value="mergeReleaseProguardFiles" />
               </ExternalTaskPojo>
@@ -1996,11 +1997,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/savastparser" />
                 <option name="name" value="prepareReleaseDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare tv.superawesome.lib.samodelspace:samodelspace:0.6.1" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/savastparser" />
-                <option name="name" value="prepareTvSuperawesomeLibSamodelspaceSamodelspace061Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/savastparser" />
@@ -2392,7 +2388,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5921866505000" />
+        <entry key="$PROJECT_DIR$" value="5921868530000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2877,11 +2873,11 @@
         <option value="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Async_Test2.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/TestSuite.java" />
         <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAXMLParser.java" />
-        <option value="$PROJECT_DIR$/savastparser/build.gradle" />
         <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java" />
         <option value="$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Async_Test.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/SAVASTParser_Local_Tests.java" />
+        <option value="$PROJECT_DIR$/savastparser/build.gradle" />
         <option value="$PROJECT_DIR$/local.properties" />
       </list>
     </option>
@@ -3530,9 +3526,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestSuite - 2017.02.14 at 14h 22m 25s.xml">
-      <configuration name="TestSuite" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
     <history-entry file="TestSuite - 2017.02.14 at 14h 23m 01s.xml">
       <configuration name="TestSuite" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
@@ -3543,6 +3536,9 @@
       <configuration name="TestSuite" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
     <history-entry file="TestSuite - 2017.02.27 at 12h 25m 17s.xml">
+      <configuration name="TestSuite" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="TestSuite - 2017.02.27 at 12h 55m 54s.xml">
       <configuration name="TestSuite" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
     <history-entry file="testParseAdXML() - 2017.01.16 at 10h 32m 41s.xml">
@@ -3583,7 +3579,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19897304" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2081545" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20795892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3935,14 +3931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/savastparser/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="86" column="64" selection-start-line="86" selection-start-column="64" selection-end-line="86" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -3977,18 +3965,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/TestSuite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/savastparser/src/main/java/tv/superawesome/lib/savastparser/SAVASTParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="285">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
           <folding>
             <element signature="e#0#121#0" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -3996,10 +3976,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/superawesome/tv/savastparserdemoapp/TestSuite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/savastparser/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="86" column="64" selection-start-line="86" selection-start-column="64" selection-end-line="86" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/local.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        <state relative-caret-position="120">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
         </state>
       </provider>
