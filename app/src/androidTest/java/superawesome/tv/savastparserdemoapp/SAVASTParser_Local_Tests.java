@@ -1,29 +1,21 @@
 package superawesome.tv.savastparserdemoapp;
 
 import android.app.Application;
-import android.os.Looper;
 import android.test.ApplicationTestCase;
-import android.test.suitebuilder.annotation.LargeTest;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import tv.superawesome.lib.samodelspace.SATracking;
-import tv.superawesome.lib.samodelspace.SAVASTAd;
-import tv.superawesome.lib.samodelspace.SAVASTAdType;
-import tv.superawesome.lib.samodelspace.SAVASTMedia;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTAd;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTAdType;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTMedia;
 import tv.superawesome.lib.savastparser.SAVASTParser;
-import tv.superawesome.lib.savastparser.SAVASTParserInterface;
 import tv.superawesome.lib.savastparser.SAXMLParser;
 
 public class SAVASTParser_Local_Tests extends ApplicationTestCase<Application> {

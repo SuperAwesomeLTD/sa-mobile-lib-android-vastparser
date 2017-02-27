@@ -16,10 +16,10 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 
 import tv.superawesome.lib.sajsonparser.SAJsonParser;
-import tv.superawesome.lib.samodelspace.SATracking;
-import tv.superawesome.lib.samodelspace.SAVASTAd;
-import tv.superawesome.lib.samodelspace.SAVASTAdType;
-import tv.superawesome.lib.samodelspace.SAVASTMedia;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTEvent;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTAd;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTAdType;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTMedia;
 import tv.superawesome.lib.sanetwork.request.SANetwork;
 import tv.superawesome.lib.sanetwork.request.SANetworkInterface;
 import tv.superawesome.lib.sautils.SAUtils;
@@ -235,7 +235,7 @@ public class SAVASTParser {
         SAXMLParser.searchSiblingsAndChildrenOf(adElement, "Error", new SAXMLParser.SAXMLIterator() {
             @Override
             public void saDidFindXMLElement(Element e) {
-                SATracking tracking = new SATracking();
+                SAVASTEvent tracking = new SAVASTEvent();
                 tracking.event = "vast_error";
                 tracking.URL = e.getTextContent();
                 ad.events.add(tracking);
@@ -246,7 +246,7 @@ public class SAVASTParser {
         SAXMLParser.searchSiblingsAndChildrenOf(adElement, "Impression", new SAXMLParser.SAXMLIterator() {
             @Override
             public void saDidFindXMLElement(Element e) {
-                SATracking tracking = new SATracking();
+                SAVASTEvent tracking = new SAVASTEvent();
                 tracking.event = "vast_impression";
                 tracking.URL = e.getTextContent();
                 ad.events.add(tracking);
@@ -259,7 +259,7 @@ public class SAVASTParser {
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "ClickThrough", new SAXMLParser.SAXMLIterator() {
             @Override
             public void saDidFindXMLElement(Element e) {
-                SATracking tracking = new SATracking();
+                SAVASTEvent tracking = new SAVASTEvent();
                 tracking.event = "vast_click_through";
                 tracking.URL = e.getTextContent().replace("&amp;", "&").replace("%3A", ":").replace("%2F", "/");
                 ad.events.add(tracking);
@@ -269,7 +269,7 @@ public class SAVASTParser {
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "ClickTracking", new SAXMLParser.SAXMLIterator() {
             @Override
             public void saDidFindXMLElement(Element e) {
-                SATracking tracking = new SATracking();
+                SAVASTEvent tracking = new SAVASTEvent();
                 tracking.event = "vast_click_tracking";
                 tracking.URL = e.getTextContent();
                 ad.events.add(tracking);
@@ -279,7 +279,7 @@ public class SAVASTParser {
         SAXMLParser.searchSiblingsAndChildrenOf(creativeXML, "Tracking", new SAXMLParser.SAXMLIterator() {
             @Override
             public void saDidFindXMLElement(Element e) {
-                SATracking tracking = new SATracking();
+                SAVASTEvent tracking = new SAVASTEvent();
                 tracking.event = "vast_" + e.getAttribute("event");
                 tracking.URL = e.getTextContent();
                 ad.events.add(tracking);

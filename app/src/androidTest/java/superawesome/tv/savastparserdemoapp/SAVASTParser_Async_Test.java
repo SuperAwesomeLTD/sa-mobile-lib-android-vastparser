@@ -7,8 +7,8 @@ import android.test.suitebuilder.annotation.LargeTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import tv.superawesome.lib.samodelspace.SATracking;
-import tv.superawesome.lib.samodelspace.SAVASTAd;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTEvent;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTAd;
 import tv.superawesome.lib.savastparser.SAVASTParser;
 import tv.superawesome.lib.savastparser.SAVASTParserInterface;
 
@@ -44,13 +44,13 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 assertNotNull(ad.events);
                 assertEquals(expected_vastEventsL, ad.events.size());
 
-                SATracking error = null;
-                SATracking impression = null;
-                SATracking click = null;
-                for (SATracking tracking : ad.events) {
-                    if (tracking.event.equals("vast_error")) error = tracking;
-                    if (tracking.event.equals("vast_impression")) impression = tracking;
-                    if (tracking.event.equals("vast_click_through")) click = tracking;
+                SAVASTEvent error = null;
+                SAVASTEvent impression = null;
+                SAVASTEvent click = null;
+                for (SAVASTEvent evt : ad.events) {
+                    if (evt.event.equals("vast_error")) error = evt;
+                    if (evt.event.equals("vast_impression")) impression = evt;
+                    if (evt.event.equals("vast_click_through")) click = evt;
                 }
 
                 assertNotNull(error);
@@ -93,16 +93,16 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 assertNotNull(ad.events);
                 assertEquals(expected_vastEventsL, ad.events.size());
 
-                List<SATracking> errors = new ArrayList<>();
-                List<SATracking> impressions = new ArrayList<>();
-                List<SATracking> clicks_tracking = new ArrayList<>();
-                List<SATracking> click_through = new ArrayList<>();
+                List<SAVASTEvent> errors = new ArrayList<>();
+                List<SAVASTEvent> impressions = new ArrayList<>();
+                List<SAVASTEvent> clicks_tracking = new ArrayList<>();
+                List<SAVASTEvent> click_through = new ArrayList<>();
 
-                for (SATracking tracking : ad.events) {
-                    if (tracking.event.equals("vast_error")) errors.add(tracking);
-                    if (tracking.event.equals("vast_impression")) impressions.add(tracking);
-                    if (tracking.event.equals("vast_click_tracking")) clicks_tracking.add(tracking);
-                    if (tracking.event.equals("vast_click_through")) click_through.add(tracking);
+                for (SAVASTEvent evt : ad.events) {
+                    if (evt.event.equals("vast_error")) errors.add(evt);
+                    if (evt.event.equals("vast_impression")) impressions.add(evt);
+                    if (evt.event.equals("vast_click_tracking")) clicks_tracking.add(evt);
+                    if (evt.event.equals("vast_click_through")) click_through.add(evt);
                 }
 
                 assertEquals(expected_errorL, errors.size());
@@ -247,16 +247,16 @@ public class SAVASTParser_Async_Test extends ActivityInstrumentationTestCase2<Ma
                 assertNotNull(ad.events);
                 assertEquals(expected_vastEventsL, ad.events.size());
 
-                List<SATracking> errors = new ArrayList<>();
-                List<SATracking> impressions = new ArrayList<>();
-                List<SATracking> clicks_tracking = new ArrayList<>();
-                List<SATracking> click_through = new ArrayList<>();
+                List<SAVASTEvent> errors = new ArrayList<>();
+                List<SAVASTEvent> impressions = new ArrayList<>();
+                List<SAVASTEvent> clicks_tracking = new ArrayList<>();
+                List<SAVASTEvent> click_through = new ArrayList<>();
 
-                for (SATracking tracking : ad.events) {
-                    if (tracking.event.equals("vast_error")) errors.add(tracking);
-                    if (tracking.event.equals("vast_impression")) impressions.add(tracking);
-                    if (tracking.event.equals("vast_click_tracking")) clicks_tracking.add(tracking);
-                    if (tracking.event.equals("vast_click_through")) click_through.add(tracking);
+                for (SAVASTEvent evt : ad.events) {
+                    if (evt.event.equals("vast_error")) errors.add(evt);
+                    if (evt.event.equals("vast_impression")) impressions.add(evt);
+                    if (evt.event.equals("vast_click_tracking")) clicks_tracking.add(evt);
+                    if (evt.event.equals("vast_click_through")) click_through.add(evt);
                 }
 
                 assertEquals(expected_errorL, errors.size());

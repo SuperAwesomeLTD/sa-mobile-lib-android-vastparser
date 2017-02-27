@@ -4,7 +4,7 @@
  */
 package tv.superawesome.lib.savastparser;
 
-import tv.superawesome.lib.samodelspace.SAVASTAd;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTAd;
 
 /**
  * Interface used by the VAST parser to return a complete parsed VAST Ad
