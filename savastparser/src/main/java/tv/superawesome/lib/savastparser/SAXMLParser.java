@@ -58,7 +58,7 @@ public class SAXMLParser {
     public static void searchSiblingsAndChildrenOf(Node node, String name, List<Element> list) {
 
         // guard against null node & name
-        if (node == null || name == null) return;;
+        if (node == null || name == null) return;
 
         // get the sub-nodes
         NodeList subnodes = new NodeList() {

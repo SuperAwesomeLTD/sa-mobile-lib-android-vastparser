@@ -198,7 +198,7 @@ public class SAVASTParser {
                         }
                     }
 
-                } catch (ParserConfigurationException | IOException | SAXException e) {
+                } catch (ParserConfigurationException | IOException | SAXException | NullPointerException e) {
                     // if there's an XML error, again assume it all went to shit and don't
                     // bother summing ads or anything, just pass the start ad as it is
                     listener.saDidParseVAST(startAd);

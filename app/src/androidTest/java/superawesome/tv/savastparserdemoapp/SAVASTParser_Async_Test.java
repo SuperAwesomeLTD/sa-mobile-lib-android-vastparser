@@ -1,15 +1,14 @@
 package superawesome.tv.savastparserdemoapp;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.LargeTest;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-import tv.superawesome.lib.samodelspace.vastad.SAVASTEvent;
 import tv.superawesome.lib.samodelspace.vastad.SAVASTAd;
+import tv.superawesome.lib.samodelspace.vastad.SAVASTEvent;
 import tv.superawesome.lib.savastparser.SAVASTParser;
 import tv.superawesome.lib.savastparser.SAVASTParserInterface;
 
