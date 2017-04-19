@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="sajsonparser-0.2.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/savastparser/build/intermediates/exploded-aar/tv.superawesome.lib.sajsonparser/sajsonparser/0.2.7/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/savastparser/build/intermediates/exploded-aar/tv.superawesome.lib.sajsonparser/sajsonparser/0.2.7/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

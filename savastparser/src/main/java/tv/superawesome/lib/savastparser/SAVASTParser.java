@@ -43,10 +43,9 @@ public class SAVASTParser {
     public SAVASTParser (Context context) {
         this.context = context;
         query = new JSONObject();
-        header = SAJsonParser.newObject(new Object[]{
+        header = SAJsonParser.newObject(
                 "Content-Type", "application/json",
-                "User-Agent", SAUtils.getUserAgent(context)
-        });
+                "User-Agent", SAUtils.getUserAgent(context));
     }
 
     /**

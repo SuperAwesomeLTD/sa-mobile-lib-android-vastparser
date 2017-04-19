@@ -131,9 +131,9 @@
     <orderEntry type="library" exported="" scope="TEST" name="jsr305-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.4.0" level="project" />
     <orderEntry type="module" module-name="savastparser" exported="" />
+    <orderEntry type="library" exported="" name="sajsonparser-0.2.7" level="project" />
     <orderEntry type="library" exported="" name="sanetwork-0.3.7" level="project" />
-    <orderEntry type="library" exported="" name="sajsonparser-0.2.6" level="project" />
+    <orderEntry type="library" exported="" name="samodelspace-0.6.8" level="project" />
     <orderEntry type="library" exported="" name="sautils-0.3.4" level="project" />
-    <orderEntry type="library" exported="" name="samodelspace-0.6.7" level="project" />
   </component>
 </module>
