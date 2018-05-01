@@ -1,9 +1,9 @@
-package superawesome.tv.savastparserdemoapp;
+package tv.superawesome.lib.savastparser.vastparser;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
-import android.test.suitebuilder.annotation.SmallTest;
+import android.content.Context;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -17,46 +17,24 @@ import tv.superawesome.lib.samodelspace.vastad.SAVASTAdType;
 import tv.superawesome.lib.samodelspace.vastad.SAVASTMedia;
 import tv.superawesome.lib.savastparser.SAVASTParser;
 import tv.superawesome.lib.savastparser.SAXMLParser;
+import tv.superawesome.lib.savastparser.testutils.ResourceReader;
 
-public class SAVASTParser_Local_Tests2 extends ApplicationTestCase<Application> {
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNull;
+import static junit.framework.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
 
-    String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-            "<VAST version=\"3.0\">\n" +
-            "   <Ad id=\"undefined\">\n" +
-            "      <InLine>\n" +
-            "         <AdSystem version=\"1.0\">AwesomeAds</AdSystem>\n" +
-            "         <AdTitle><![CDATA[REX fake exchange creative]]></AdTitle>\n" +
-            "         <Description />\n" +
-            "         <Error><![CDATA[https://ads.staging.superawesome.tv/v2/video/error?placement=544&amp;creative=5728&amp;line_item=1022&amp;sdkVersion=unknown&amp;rnd=7062039&amp;prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&amp;device=web&amp;country=GB&amp;code=[ERRORCODE]]]></Error>\n" +
-            "         <Impression id=\"23\"><![CDATA[https://ads.staging.superawesome.tv/v2/video/impression?placement=544&amp;creative=5728&amp;line_item=1022&amp;sdkVersion=unknown&amp;rnd=9788452&amp;prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&amp;device=web&amp;country=GB]]></Impression>\n" +
-            "         <Creatives>\n" +
-            "            <Creative id=\"5728\">\n" +
-            "               <Linear>\n" +
-            "                  <Duration>00:00:05</Duration>\n" +
-            "                  <TrackingEvents>\n" +
-            "                     <Tracking event=\"creativeView\">https://ads.staging.superawesome.tv/v2/video/tracking?event=creativeView&amp;placement=544&amp;creative=5728&amp;line_item=1022&amp;sdkVersion=unknown&amp;rnd=3266878&amp;prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&amp;device=web&amp;country=GB</Tracking>\n" +
-            "                     <Tracking event=\"start\">https://ads.staging.superawesome.tv/v2/video/tracking?event=start&amp;placement=544&amp;creative=5728&amp;line_item=1022&amp;sdkVersion=unknown&amp;rnd=9640628&amp;prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&amp;device=web&amp;country=GB</Tracking>\n" +
-            "                     <Tracking event=\"firstQuartile\">https://ads.staging.superawesome.tv/v2/video/tracking?event=firstQuartile&amp;placement=544&amp;creative=5728&amp;line_item=1022&amp;sdkVersion=unknown&amp;rnd=2560539&amp;prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&amp;device=web&amp;country=GB</Tracking>\n" +
-            "                     </TrackingEvents>\n" +
-            "                  <VideoClicks>\n" +
-            "                     <ClickThrough id=\"\">https://ads.staging.superawesome.tv/v2/video/click?placement=544&amp;creative=5728&amp;line_item=1022&amp;sdkVersion=unknown&amp;rnd=9970101&amp;prog=a35a7dab-86f1-437f-b3d9-3b58ef069390&amp;device=web&amp;country=GB</ClickThrough>\n" +
-            "                  </VideoClicks>\n" +
-            "                  <MediaFiles>\n" +
-            "                     <MediaFile type=\"video/mp4\" width=\"600\" height=\"480\" delivery=\"progressive\" id=\"5728\" bitrate=\"720\"><![CDATA[https://s3-eu-west-1.amazonaws.com/sb-ads-video-transcoded/c0sKSRTuPu8dDkok2HQTnLS1k3A6vL6c.mp4]]></MediaFile>\n" +
-            "                     <MediaFile type=\"application/x-mpegURL\" width=\"600\" height=\"480\" delivery=\"streaming\" id=\"5728\" bitrate=\"1800\"><![CDATA[https://s3-eu-west-1.amazonaws.com/sb-ads-video-transcoded/c0sKSRTuPu8dDkok2HQTnLS1k3A6vL6c.m3u8]]></MediaFile>\n" +
-            "                  </MediaFiles>\n" +
-            "               </Linear>\n" +
-            "            </Creative>\n" +
-            "         </Creatives>\n" +
-            "      </InLine>\n" +
-            "   </Ad>\n" +
-            "</VAST>";
+public class SAVASTParser_Local_Tests2  {
 
-    public SAVASTParser_Local_Tests2() {
-        super(Application.class);
+    private String xml = null;
+
+    @Before
+    public void setUp () {
+        xml = ResourceReader.readResource("mock_xml_response_2.xml");
     }
 
-    @SmallTest
+    @Test
     public void testParseAdXML1 () {
 
         try {
@@ -67,7 +45,9 @@ public class SAVASTParser_Local_Tests2 extends ApplicationTestCase<Application> 
             assertNotNull(document);
 
             // create and assert a new parser
-            SAVASTParser parser = new SAVASTParser(getContext());
+            Context context = null; // mock(Context.class);
+
+            SAVASTParser parser = new SAVASTParser(context);
             assertNotNull(parser);
 
             Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, "Ad");
@@ -121,7 +101,7 @@ public class SAVASTParser_Local_Tests2 extends ApplicationTestCase<Application> 
         }
     }
 
-    @SmallTest
+    @Test
     public void testParseAdXML2 () {
 
         // parse the XML document
@@ -129,7 +109,9 @@ public class SAVASTParser_Local_Tests2 extends ApplicationTestCase<Application> 
         String tag = "Ad";
 
         // create and assert a new parser
-        SAVASTParser parser = new SAVASTParser(getContext());
+        Context context = null; // mock(Context.class);
+
+        SAVASTParser parser = new SAVASTParser(context);
         assertNotNull(parser);
 
         Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, tag);
@@ -150,7 +132,7 @@ public class SAVASTParser_Local_Tests2 extends ApplicationTestCase<Application> 
         assertEquals(expected_mediaListSize, ad.media.size());
     }
 
-    @SmallTest
+    @Test
     public void testParseAdXML3 () {
 
         // parse the XML document
@@ -158,7 +140,9 @@ public class SAVASTParser_Local_Tests2 extends ApplicationTestCase<Application> 
         String tag = null;
 
         // create and assert a new parser
-        SAVASTParser parser = new SAVASTParser(getContext());
+        Context context = null; // mock(Context.class);
+        
+        SAVASTParser parser = new SAVASTParser(context);
         assertNotNull(parser);
 
         Element Ad = SAXMLParser.findFirstInstanceInSiblingsAndChildrenOf(document, tag);

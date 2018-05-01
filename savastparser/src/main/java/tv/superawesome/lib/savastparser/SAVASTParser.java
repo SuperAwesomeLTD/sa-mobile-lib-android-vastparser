@@ -12,6 +12,8 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -35,17 +37,36 @@ public class SAVASTParser {
     private JSONObject header = null;
     private JSONObject query = null;
 
+    private Executor executor;
+    private int timeout;
+
     /**
      * Simple constructor with a context as a parameter
      *
      * @param context current context (activity or fragment)
      */
     public SAVASTParser (Context context) {
+
+        executor = Executors.newSingleThreadExecutor();
+        timeout = 15000;
+
         this.context = context;
         query = new JSONObject();
         header = SAJsonParser.newObject(
                 "Content-Type", "application/json",
                 "User-Agent", SAUtils.getUserAgent(context));
+    }
+
+    /**
+     * Constructor mainly used for testing
+     * @param context   current context (activity or fragment)
+     * @param executor  a test executor
+     * @param timeout   a timeout
+     */
+    public SAVASTParser (Context context, Executor executor, int timeout) {
+        this(context);
+        this.executor = executor;
+        this.timeout = timeout;
     }
 
     /**
@@ -141,8 +162,8 @@ public class SAVASTParser {
      */
     private void recursiveParse(String url, final SAVASTAd startAd, final SAVASTParserInterface listener) {
 
-        final SANetwork network = new SANetwork();
-        network.sendGET(context, url, query, header, new SANetworkInterface() {
+        final SANetwork network = new SANetwork(executor, timeout);
+        network.sendGET(url, query, header, new SANetworkInterface() {
             /**
              * Overridden SANetworkInterface method that deals with the network result - in this
              * case parsing a String payload that should contain valid VAST XML

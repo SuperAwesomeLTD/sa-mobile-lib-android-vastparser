@@ -12,12 +12,12 @@ def siteUrl = 'https://github.com/SuperAwesomeLTD/sa-mobile-lib-android-vastpars
 def gitUrl = 'https://github.com/SuperAwesomeLTD/sa-mobile-lib-android-vastparser.git'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName version
     }
@@ -78,11 +78,23 @@ repositories {
     maven {
         url  "http://dl.bintray.com/gabrielcoman/maven"
     }
+    google()
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'tv.superawesome.lib.sanetwork:sanetwork:0.3.8'
-    compile 'tv.superawesome.lib.sautils:sautils:0.3.6'
-    compile 'tv.superawesome.lib.samodelspace:samodelspace:0.7.2'
+    compile 'tv.superawesome.lib.sanetwork:sanetwork:1.0.1'
+    compile 'tv.superawesome.lib.sautils:sautils:1.0.1'
+    compile 'tv.superawesome.lib.samodelspace:samodelspace:1.0.0'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:2.+"
+    testImplementation "eu.codearte.catch-exception:catch-exception:1.4.4"
+    testImplementation "org.assertj:assertj-core:3.8.0"
+    testImplementation 'com.squareup.okhttp3:mockwebserver:3.9.1'
+
+    testImplementation files('libs/json.jar')
+
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 }
