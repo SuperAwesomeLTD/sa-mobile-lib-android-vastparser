@@ -82,7 +82,7 @@ repositories {
 }
 
 dependencies {
-    compile 'tv.superawesome.lib.sanetwork:sanetwork:1.0.1'
+    compile 'tv.superawesome.lib.sanetwork:sanetwork:1.0.2'
     compile 'tv.superawesome.lib.sautils:sautils:1.0.1'
     compile 'tv.superawesome.lib.samodelspace:samodelspace:1.0.0'
 

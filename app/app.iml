@@ -81,7 +81,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes-jar" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
@@ -104,7 +103,7 @@
     <orderEntry type="library" name="support-media-compat-26.1.0" level="project" />
     <orderEntry type="library" name="support-compat-26.1.0" level="project" />
     <orderEntry type="library" name="recyclerview-v7-26.1.0" level="project" />
-    <orderEntry type="library" name="sanetwork-1.0.1" level="project" />
+    <orderEntry type="library" name="sanetwork-1.0.2" level="project" />
     <orderEntry type="library" name="sajsonparser-1.0.1" level="project" />
     <orderEntry type="library" name="sautils-1.0.1" level="project" />
     <orderEntry type="library" name="support-annotations-26.1.0" level="project" />

@@ -7,6 +7,4 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="superawesome.tv.savastparserdemoapp.MainActivity">
-
-
 </LinearLayout>
