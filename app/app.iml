@@ -98,14 +98,14 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="samodelspace-1.0.0" level="project" />
     <orderEntry type="library" name="support-core-ui-26.1.0" level="project" />
     <orderEntry type="library" name="support-media-compat-26.1.0" level="project" />
     <orderEntry type="library" name="support-compat-26.1.0" level="project" />
+    <orderEntry type="library" name="samodelspace-1.0.1" level="project" />
     <orderEntry type="library" name="recyclerview-v7-26.1.0" level="project" />
-    <orderEntry type="library" name="sanetwork-1.1.0" level="project" />
-    <orderEntry type="library" name="sajsonparser-1.0.1" level="project" />
-    <orderEntry type="library" name="sautils-1.0.1" level="project" />
+    <orderEntry type="library" name="sautils-1.0.2" level="project" />
+    <orderEntry type="library" name="sanetwork-1.2.0" level="project" />
+    <orderEntry type="library" name="sajsonparser-1.0.2" level="project" />
     <orderEntry type="library" name="support-annotations-26.1.0" level="project" />
     <orderEntry type="library" name="support-vector-drawable-26.1.0" level="project" />
     <orderEntry type="library" name="support-v4-26.1.0" level="project" />
