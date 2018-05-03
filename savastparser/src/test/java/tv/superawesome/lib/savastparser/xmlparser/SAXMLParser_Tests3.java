@@ -21,7 +21,7 @@ public class SAXMLParser_Tests3 {
 
     @Before
     public void setUp () {
-        xml = ResourceReader.readResource("mock_xml_response_4.xml");
+        xml = ResourceReader.readResource("mock_xml_response_2.xml");
     }
 
     @Test

@@ -22,7 +22,7 @@ public class SAXMLParser_Tests5 {
 
     @Before
     public void setUp () {
-        xml = ResourceReader.readResource("mock_xml_response_4.xml");
+        xml = ResourceReader.readResource("mock_xml_response_2.xml");
     }
 
     @Test

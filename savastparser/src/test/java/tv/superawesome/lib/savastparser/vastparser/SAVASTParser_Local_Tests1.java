@@ -27,7 +27,7 @@ public class SAVASTParser_Local_Tests1  {
 
     @Before
     public void setUp () {
-        xml = ResourceReader.readResource("mock_xml_response_1.xml");
+        xml = ResourceReader.readResource("mock_media_files_response_1.xml");
     }
 
     @Test
